@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/about">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1><%= message %></h1>
+        <p>这是一个动态网站示例，使用Node.js和Express构建。</p>
+        <h2>动态特效制作</h2>
+        <form action="/create-effect" method="POST">
+            <div class="form-group">
+                <label for="effect-type">特效类型:</label>
+                <select id="effect-type" name="effectType" required>
+                    <option value="particle">粒子效果</option>
+                    <option value="wave">波浪效果</option>
+                    <option value="glow">发光效果</option>
+                    <option value="fade">淡入淡出效果</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="primary-color">主色调:</label>
+                <input type="color" id="primary-color" name="primaryColor" value="#ff0000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="secondary-color">辅助色:</label>
+                <input type="color" id="secondary-color" name="secondaryColor" value="#00ff00">
+            </div>
+            
+            <div class="form-group">
+                <label for="effect-speed">特效速度:</label>
+                <input type="range" id="effect-speed" name="effectSpeed" min="1" max="10" value="5">
+                <span id="speed-value">5</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="effect-size">特效大小:</label>
+                <input type="range" id="effect-size" name="effectSize" min="1" max="100" value="50">
+                <span id="size-value">50</span>
+            </div>
+            
+            <button type="submit">生成特效</button>
+        </form>
+
+        <script>
+            // 更新滑块值显示
+            document.getElementById('effect-speed').addEventListener('input', function() {
+                document.getElementById('speed-value').textContent = this.value;
+            });
+            
+            document.getElementById('effect-size').addEventListener('input', function() {
+                document.getElementById('size-value').textContent = this.value;
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> lsx.github.io</p>
+    </footer>
+</body>
+</html>
