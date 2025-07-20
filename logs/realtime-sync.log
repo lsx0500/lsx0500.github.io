@@ -648,3 +648,9 @@
 [2025-07-20 15:02:43] [INFO] Changes detected. Starting sync...
 [2025-07-20 15:02:44] [INFO] Changes found:
 [2025-07-20 15:02:44] [INFO]    M logs/realtime-sync.log
+[2025-07-20 15:02:44] [INFO] Added all changes
+[2025-07-20 15:02:44] [INFO] Committed: Auto-sync: 2025-07-20 15:02:44
+[2025-07-20 15:02:46] [INFO] Push successful to main branch
+[2025-07-20 15:02:47] [INFO] Changes detected. Starting sync...
+[2025-07-20 15:02:47] [INFO] Changes found:
+[2025-07-20 15:02:47] [INFO]    M logs/realtime-sync.log
