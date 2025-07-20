@@ -174,11 +174,11 @@
             background: #555;
         }
 
-        .link-btn.local {
+        .link-btn.online {
             background: #28a745;
         }
 
-        .link-btn.local:hover {
+        .link-btn.online:hover {
             background: #1e7e34;
         }
 
@@ -213,6 +213,37 @@
             background: white;
         }
 
+        .mode-switch {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .mode-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .mode-btn.active {
+            background: #ff6b6b;
+        }
+
+        .mode-btn:hover {
+            background: #5a6268;
+        }
+
+        .mode-btn.active:hover {
+            background: #ee5a24;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -237,6 +268,12 @@
         </div>
 
         <div class="form-container">
+            <div class="mode-switch">
+                <button class="mode-btn active" id="onlineMode">🌐 在线模式</button>
+                <button class="mode-btn" id="localMode">💻 本地模式</button>
+                <p id="modeDescription">在线模式：直接生成图案，无需本地服务</p>
+            </div>
+
             <form id="patternForm">
                 <div class="form-group">
                     <label for="patternType">图案类型</label>
@@ -244,7 +281,7 @@
                         <option value="">请选择图案类型</option>
                         <option value="heart">心形图案</option>
                         <option value="star">星形图案</option>
-                        <option value="flower">花朵图案</option>
+                        <option value="text">文字图案</option>
                     </select>
                 </div>
 
@@ -278,12 +315,8 @@
                 <h3>✅ 图案生成成功！</h3>
                 <div class="link-group">
                     <h4>🌐 在线预览</h4>
-                    <a href="#" class="link-btn" id="previewLink" target="_blank">查看动画效果</a>
-                    <a href="#" class="link-btn github" id="githubLink" target="_blank">GitHub源码</a>
-                </div>
-                <div class="link-group">
-                    <h4>🌐 在线预览</h4>
                     <a href="#" class="link-btn online" id="onlineLink" target="_blank">GitHub Pages预览</a>
+                    <a href="#" class="link-btn github" id="githubLink" target="_blank">GitHub源码</a>
                 </div>
                 <div class="pattern-preview">
                     <h4>🎭 实时预览</h4>
@@ -298,29 +331,236 @@
         const loading = document.getElementById('loading');
         const result = document.getElementById('result');
         const generateBtn = document.getElementById('generateBtn');
-        const previewLink = document.getElementById('previewLink');
-        const githubLink = document.getElementById('githubLink');
         const onlineLink = document.getElementById('onlineLink');
+        const githubLink = document.getElementById('githubLink');
         const previewFrame = document.getElementById('previewFrame');
+        const onlineModeBtn = document.getElementById('onlineMode');
+        const localModeBtn = document.getElementById('localMode');
+        const modeDescription = document.getElementById('modeDescription');
 
-        // 自动检测后端服务地址
-        let backendUrl = 'http://localhost:8080';
-        
-        // 检测当前设备IP地址
-        async function detectBackendUrl() {
-            try {
-                // 尝试获取本机IP地址
-                const response = await fetch('/api/ip', { method: 'GET' });
-                if (response.ok) {
-                    const ipData = await response.json();
-                    if (ipData.ip) {
-                        backendUrl = `http://${ipData.ip}:8080`;
-                        console.log('检测到后端地址:', backendUrl);
-                    }
-                }
-            } catch (error) {
-                console.log('使用默认后端地址:', backendUrl);
+        let currentMode = 'online';
+        let backendUrl = '';
+
+        // 模式切换
+        onlineModeBtn.addEventListener('click', () => {
+            setMode('online');
+        });
+
+        localModeBtn.addEventListener('click', () => {
+            setMode('local');
+        });
+
+        function setMode(mode) {
+            currentMode = mode;
+            onlineModeBtn.classList.toggle('active', mode === 'online');
+            localModeBtn.classList.toggle('active', mode === 'local');
+            
+            if (mode === 'online') {
+                modeDescription.textContent = '在线模式：直接生成图案，无需本地服务';
+                backendUrl = '';
+            } else {
+                modeDescription.textContent = '本地模式：需要本地后端服务运行';
+                backendUrl = 'http://localhost:8080';
             }
+        }
+
+        // 在线模式：直接生成HTML
+        function generateOnlinePattern(data) {
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '').slice(0, -5);
+            const filename = `${data.patternType}_${timestamp}.html`;
+            
+            // 生成HTML内容
+            const htmlContent = generateHTMLContent(data);
+            
+            // 创建下载链接
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            // 更新链接
+            onlineLink.href = url;
+            onlineLink.download = filename;
+            onlineLink.textContent = '下载图案文件';
+            
+            githubLink.href = `https://github.com/lsx0500/lsx0500.github.io`;
+            githubLink.textContent = '查看GitHub仓库';
+            
+            // 设置预览
+            previewFrame.src = url;
+            
+            return {
+                success: true,
+                message: '图案生成成功！',
+                filename: filename,
+                previewUrl: url,
+                fileUrl: url
+            };
+        }
+
+        // 生成HTML内容
+        function generateHTMLContent(data) {
+            const { patternType, userText, primaryColor, bgColor } = data;
+            
+            let patternHTML = '';
+            
+            if (patternType === 'heart') {
+                patternHTML = `
+                    <div class="heart-container">
+                        <div class="heart" style="color: ${primaryColor}; background: ${bgColor};">
+                            <div class="heart-text">${userText}</div>
+                        </div>
+                    </div>
+                    <style>
+                        .heart-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                            background: ${bgColor};
+                        }
+                        .heart {
+                            position: relative;
+                            width: 100px;
+                            height: 90px;
+                            animation: heartbeat 1.5s ease-in-out infinite;
+                        }
+                        .heart:before,
+                        .heart:after {
+                            position: absolute;
+                            content: "";
+                            left: 50px;
+                            top: 0;
+                            width: 50px;
+                            height: 80px;
+                            background: ${primaryColor};
+                            border-radius: 50px 50px 0 0;
+                            transform: rotate(-45deg);
+                            transform-origin: 0 100%;
+                        }
+                        .heart:after {
+                            left: 0;
+                            transform: rotate(45deg);
+                        }
+                        .heart-text {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: white;
+                            font-size: 16px;
+                            font-weight: bold;
+                            text-align: center;
+                            z-index: 10;
+                        }
+                        @keyframes heartbeat {
+                            0%, 100% { transform: scale(1); }
+                            50% { transform: scale(1.1); }
+                        }
+                    </style>
+                `;
+            } else if (patternType === 'star') {
+                patternHTML = `
+                    <div class="star-container">
+                        <div class="star" style="color: ${primaryColor}; background: ${bgColor};">
+                            <div class="star-text">${userText}</div>
+                        </div>
+                    </div>
+                    <style>
+                        .star-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                            background: ${bgColor};
+                        }
+                        .star {
+                            position: relative;
+                            width: 0;
+                            height: 0;
+                            border-left: 50px solid transparent;
+                            border-right: 50px solid transparent;
+                            border-bottom: 100px solid ${primaryColor};
+                            animation: twinkle 2s ease-in-out infinite;
+                        }
+                        .star:before {
+                            content: '';
+                            position: absolute;
+                            top: 30px;
+                            left: -50px;
+                            border-left: 50px solid transparent;
+                            border-right: 50px solid transparent;
+                            border-bottom: 100px solid ${primaryColor};
+                            transform: rotate(70deg);
+                        }
+                        .star:after {
+                            content: '';
+                            position: absolute;
+                            top: 30px;
+                            left: -50px;
+                            border-left: 50px solid transparent;
+                            border-right: 50px solid transparent;
+                            border-bottom: 100px solid ${primaryColor};
+                            transform: rotate(-70deg);
+                        }
+                        .star-text {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: white;
+                            font-size: 14px;
+                            font-weight: bold;
+                            text-align: center;
+                            z-index: 10;
+                        }
+                        @keyframes twinkle {
+                            0%, 100% { opacity: 1; transform: scale(1); }
+                            50% { opacity: 0.7; transform: scale(1.2); }
+                        }
+                    </style>
+                `;
+            } else if (patternType === 'text') {
+                patternHTML = `
+                    <div class="text-container">
+                        <div class="animated-text" style="color: ${primaryColor}; background: ${bgColor};">
+                            ${userText}
+                        </div>
+                    </div>
+                    <style>
+                        .text-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                            background: ${bgColor};
+                        }
+                        .animated-text {
+                            font-size: 48px;
+                            font-weight: bold;
+                            text-align: center;
+                            animation: textGlow 2s ease-in-out infinite;
+                            text-shadow: 0 0 10px ${primaryColor};
+                        }
+                        @keyframes textGlow {
+                            0%, 100% { text-shadow: 0 0 10px ${primaryColor}; }
+                            50% { text-shadow: 0 0 20px ${primaryColor}, 0 0 30px ${primaryColor}; }
+                        }
+                    </style>
+                `;
+            }
+
+            return `
+                <!DOCTYPE html>
+                <html lang="zh-CN">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>${userText} - 动态图案</title>
+                </head>
+                <body>
+                    ${patternHTML}
+                </body>
+                </html>
+            `;
         }
 
         form.addEventListener('submit', async (e) => {
@@ -341,35 +581,35 @@
             };
 
             try {
-                const response = await fetch(`${backendUrl}/api/generate/pattern`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
+                let resultData;
+                
+                if (currentMode === 'online') {
+                    // 在线模式：直接生成
+                    resultData = generateOnlinePattern(data);
+                } else {
+                    // 本地模式：调用后端API
+                    const response = await fetch(`${backendUrl}/api/generate/pattern`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
 
-                const resultData = await response.json();
+                    resultData = await response.json();
+                    
+                    if (resultData.success) {
+                        onlineLink.href = resultData.fileUrl;
+                        onlineLink.textContent = 'GitHub Pages预览';
+                        githubLink.href = resultData.gitUrl;
+                        githubLink.textContent = 'GitHub源码';
+                        previewFrame.src = resultData.previewUrl;
+                    }
+                }
 
                 if (resultData.success) {
-                    // 更新链接
-                    previewLink.href = resultData.previewUrl;
-                    githubLink.href = resultData.gitUrl;
-                    onlineLink.href = resultData.fileUrl;
-                    
-                    // 设置预览框架
-                    previewFrame.src = resultData.previewUrl;
-                    
                     // 显示结果
                     result.style.display = 'block';
-                    
-                    // 启动部署等待页面
-                    const filename = resultData.previewUrl.split('/').pop();
-                    const deploymentUrl = resultData.previewUrl;
-                    const waitUrl = `deployment-wait.html?url=${encodeURIComponent(deploymentUrl)}&filename=${encodeURIComponent(filename)}`;
-                    
-                    // 在新窗口中打开部署等待页面
-                    window.open(waitUrl, '_blank', 'width=600,height=700');
                 } else {
                     showError('生成失败: ' + resultData.message);
                 }
@@ -393,19 +633,9 @@
         }
 
         // 页面加载完成后的初始化
-        window.addEventListener('load', async () => {
-            // 检测后端地址
-            await detectBackendUrl();
-            
-            // 检查后端服务状态
-            try {
-                const response = await fetch(`${backendUrl}/api/generate/health`);
-                const data = await response.text();
-                console.log('后端服务状态:', data);
-            } catch (error) {
-                console.error('后端服务连接失败:', error);
-                showError('后端服务未启动，请确保后端服务正在运行');
-            }
+        window.addEventListener('load', () => {
+            // 默认使用在线模式
+            setMode('online');
         });
     </script>
 </body>
