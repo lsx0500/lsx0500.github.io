@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图案测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-link {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f0f0f0;
+            text-decoration: none;
+            color: #333;
+            border-radius: 5px;
+        }
+        .test-link:hover {
+            background: #e0e0e0;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 图案生成测试页面</h1>
+    
+    <h2>测试生成的图案文件</h2>
+    
+    <div id="testResults"></div>
+    
+    <h3>可用的图案文件：</h3>
+    <a href="core/frontend/generated/heart_20250720_124523.html" class="test-link" target="_blank">
+        ❤️ 心形图案 1 (heart_20250720_124523.html)
+    </a>
+    <a href="core/frontend/generated/heart_20250720_124720.html" class="test-link" target="_blank">
+        ❤️ 心形图案 2 (heart_20250720_124720.html)
+    </a>
+    
+    <h3>GitHub Pages 链接：</h3>
+    <a href="https://lsx0500.github.io/core/frontend/generated/heart_20250720_124523.html" class="test-link" target="_blank">
+        🌐 GitHub Pages - 心形图案 1
+    </a>
+    <a href="https://lsx0500.github.io/core/frontend/generated/heart_20250720_124720.html" class="test-link" target="_blank">
+        🌐 GitHub Pages - 心形图案 2
+    </a>
+    
+    <script>
+        // 测试文件是否可以访问
+        async function testFileAccess() {
+            const files = [
+                'core/frontend/generated/heart_20250720_124523.html',
+                'core/frontend/generated/heart_20250720_124720.html'
+            ];
+            
+            const resultsDiv = document.getElementById('testResults');
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        resultsDiv.innerHTML += `<div class="status success">✅ ${file} - 可以访问</div>`;
+                    } else {
+                        resultsDiv.innerHTML += `<div class="status error">❌ ${file} - 无法访问 (${response.status})</div>`;
+                    }
+                } catch (error) {
+                    resultsDiv.innerHTML += `<div class="status error">❌ ${file} - 错误: ${error.message}</div>`;
+                }
+            }
+        }
+        
+        // 页面加载时测试
+        window.addEventListener('load', testFileAccess);
+    </script>
+</body>
+</html> 
