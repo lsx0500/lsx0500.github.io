@@ -13,10 +13,10 @@ Write-Host "Project Root: $ProjectRoot" -ForegroundColor Yellow
 function Test-FileExists {
     param([string]$Path, [string]$Description)
     if (Test-Path $Path) {
-        Write-Host "✅ $Description: $Path" -ForegroundColor Green
+        Write-Host "OK $Description: $Path" -ForegroundColor Green
         return $true
     } else {
-        Write-Host "❌ $Description: $Path (NOT FOUND)" -ForegroundColor Red
+        Write-Host "ERROR $Description: $Path (NOT FOUND)" -ForegroundColor Red
         return $false
     }
 }
@@ -25,10 +25,10 @@ function Test-FileExists {
 function Test-DirectoryExists {
     param([string]$Path, [string]$Description)
     if (Test-Path $Path) {
-        Write-Host "✅ $Description: $Path" -ForegroundColor Green
+        Write-Host "OK $Description: $Path" -ForegroundColor Green
         return $true
     } else {
-        Write-Host "❌ $Description: $Path (NOT FOUND)" -ForegroundColor Red
+        Write-Host "ERROR $Description: $Path (NOT FOUND)" -ForegroundColor Red
         return $false
     }
 }
