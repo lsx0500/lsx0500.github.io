@@ -300,7 +300,7 @@
         const generateBtn = document.getElementById('generateBtn');
         const previewLink = document.getElementById('previewLink');
         const githubLink = document.getElementById('githubLink');
-        const localLink = document.getElementById('localLink');
+        const onlineLink = document.getElementById('onlineLink');
         const previewFrame = document.getElementById('previewFrame');
 
         form.addEventListener('submit', async (e) => {
@@ -335,7 +335,7 @@
                     // 更新链接
                     previewLink.href = resultData.previewUrl;
                     githubLink.href = resultData.gitUrl;
-                    localLink.href = resultData.previewUrl.replace('https://lsx0500.github.io', 'http://localhost:8000');
+                    onlineLink.href = resultData.fileUrl;
                     
                     // 设置预览框架
                     previewFrame.src = resultData.previewUrl;
