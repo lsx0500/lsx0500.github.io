@@ -62,7 +62,7 @@ while ($elapsedSeconds -lt $MaxWaitTime) {
         $remainingSeconds = $MaxWaitTime - $elapsedSeconds
         
         if ($remainingSeconds -gt 0) {
-            Write-Host "⏳ 部署中... (已等待 ${elapsedSeconds}s, 剩余 ${remainingSeconds}s)" -ForegroundColor Yellow
+            Write-Host "⏳ 部署中... (已等待 $elapsedSeconds s, 剩余 $remainingSeconds s)" -ForegroundColor Yellow
             Show-Countdown -Seconds $CheckInterval -Message "下次检查"
         }
     }
