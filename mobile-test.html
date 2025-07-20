@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机端图案生成测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .form-container {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #ff6b6b;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result {
+            display: none;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .link-btn:hover {
+            background: #0056b3;
+        }
+
+        .debug-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 手机端测试</h1>
+            <p>图案生成器 - 移动端优化版本</p>
+        </div>
+
+        <div class="form-container">
+            <form id="patternForm">
+                <div class="form-group">
+                    <label for="patternType">图案类型</label>
+                    <select id="patternType" name="patternType" required>
+                        <option value="">请选择图案类型</option>
+                        <option value="heart">心形图案</option>
+                        <option value="star">星形图案</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="userText">显示文字</label>
+                    <input type="text" id="userText" name="userText" placeholder="输入要显示的文字" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="primaryColor">主色调</label>
+                    <input type="color" id="primaryColor" name="primaryColor" value="#ff0000">
+                </div>
+
+                <div class="form-group">
+                    <label for="bgColor">背景色</label>
+                    <input type="color" id="bgColor" name="bgColor" value="#ffffff">
+                </div>
+
+                <button type="submit" class="btn" id="generateBtn">
+                    🎨 生成图案
+                </button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>正在生成图案，请稍候...</p>
+            </div>
+
+            <div class="result" id="result">
+                <div class="success" id="successMsg" style="display: none;">
+                    ✅ 图案生成成功！
+                </div>
+                <div class="error" id="errorMsg" style="display: none;">
+                    ❌ 生成失败
+                </div>
+                <div id="links"></div>
+                <div class="debug-info" id="debugInfo"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('patternForm');
+        const loading = document.getElementById('loading');
+        const result = document.getElementById('result');
+        const generateBtn = document.getElementById('generateBtn');
+        const successMsg = document.getElementById('successMsg');
+        const errorMsg = document.getElementById('errorMsg');
+        const links = document.getElementById('links');
+        const debugInfo = document.getElementById('debugInfo');
+
+        // 获取本机IP地址
+        function getLocalIP() {
+            return window.location.hostname;
+        }
+
+        // 显示调试信息
+        function showDebugInfo(info) {
+            debugInfo.textContent = info;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // 显示加载状态
+            loading.style.display = 'block';
+            result.style.display = 'none';
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            generateBtn.disabled = true;
+            
+            // 获取表单数据
+            const formData = new FormData(form);
+            const data = {
+                patternType: formData.get('patternType'),
+                userText: formData.get('userText'),
+                primaryColor: formData.get('primaryColor'),
+                bgColor: formData.get('bgColor')
+            };
+
+            // 构建调试信息
+            let debugText = `请求信息:\n`;
+            debugText += `URL: http://${getLocalIP()}:8080/api/generate/pattern\n`;
+            debugText += `数据: ${JSON.stringify(data, null, 2)}\n\n`;
+
+            try {
+                const response = await fetch(`http://${getLocalIP()}:8080/api/generate/pattern`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                debugText += `响应状态: ${response.status}\n`;
+                debugText += `响应头: ${JSON.stringify(Object.fromEntries(response.headers.entries()), null, 2)}\n\n`;
+
+                const resultData = await response.json();
+                debugText += `响应数据: ${JSON.stringify(resultData, null, 2)}\n`;
+
+                if (resultData.success) {
+                    // 显示成功信息
+                    successMsg.style.display = 'block';
+                    errorMsg.style.display = 'none';
+                    
+                    // 创建链接
+                    links.innerHTML = `
+                        <h4>查看生成的图案:</h4>
+                        <a href="${resultData.previewUrl}" class="link-btn" target="_blank">在线预览</a>
+                        <a href="${resultData.gitUrl}" class="link-btn" target="_blank">GitHub源码</a>
+                        <a href="http://${getLocalIP()}:8000/core/frontend/generated/${resultData.previewUrl.split('/').pop()}" class="link-btn" target="_blank">本地预览</a>
+                    `;
+                } else {
+                    // 显示错误信息
+                    successMsg.style.display = 'none';
+                    errorMsg.style.display = 'block';
+                    errorMsg.textContent = `❌ 生成失败: ${resultData.message}`;
+                    links.innerHTML = '';
+                }
+            } catch (error) {
+                debugText += `错误信息: ${error.message}\n`;
+                debugText += `错误堆栈: ${error.stack}\n`;
+                
+                // 显示错误信息
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = `❌ 网络错误: ${error.message}`;
+                links.innerHTML = '';
+            } finally {
+                loading.style.display = 'none';
+                result.style.display = 'block';
+                generateBtn.disabled = false;
+                showDebugInfo(debugText);
+            }
+        });
+
+        // 页面加载完成后的初始化
+        window.addEventListener('load', () => {
+            const localIP = getLocalIP();
+            console.log('本地IP地址:', localIP);
+            
+            // 检查后端服务状态
+            fetch(`http://${localIP}:8080/api/generate/health`)
+                .then(response => response.text())
+                .then(data => {
+                    console.log('后端服务状态:', data);
+                    showDebugInfo(`系统信息:\n本地IP: ${localIP}\n后端状态: ${data}\n前端地址: http://${localIP}:8000/mobile-test.html`);
+                })
+                .catch(error => {
+                    console.error('后端服务连接失败:', error);
+                    showDebugInfo(`系统信息:\n本地IP: ${localIP}\n后端连接失败: ${error.message}\n请确保后端服务正在运行`);
+                });
+        });
+    </script>
+</body>
+</html> 

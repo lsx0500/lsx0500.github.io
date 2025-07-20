@@ -3356,3 +3356,8 @@
 [2025-07-20 13:13:40] [INFO] Changes found:
 [2025-07-20 13:13:40] [INFO]    M logs/realtime-sync.log
 [2025-07-20 13:13:40] [INFO] Changes detected. Starting sync...
+[2025-07-20 13:13:40] [INFO] Changes found:
+[2025-07-20 13:17:19] [INFO] Changes detected. Starting sync...
+[2025-07-20 13:17:19] [INFO] Changes found:
+[2025-07-20 13:17:19] [INFO]    M logs/realtime-sync.log
+[2025-07-20 13:17:19] [INFO]   ?? mobile-test.html
