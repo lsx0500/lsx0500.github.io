@@ -342,6 +342,14 @@
                     
                     // 显示结果
                     result.style.display = 'block';
+                    
+                    // 启动部署等待页面
+                    const filename = resultData.previewUrl.split('/').pop();
+                    const deploymentUrl = resultData.previewUrl;
+                    const waitUrl = `deployment-wait.html?url=${encodeURIComponent(deploymentUrl)}&filename=${encodeURIComponent(filename)}`;
+                    
+                    // 在新窗口中打开部署等待页面
+                    window.open(waitUrl, '_blank', 'width=600,height=700');
                 } else {
                     showError('生成失败: ' + resultData.message);
                 }
