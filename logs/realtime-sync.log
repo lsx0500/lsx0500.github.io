@@ -3891,3 +3891,13 @@
 [2025-07-20 13:28:49] [INFO] Changes detected. Starting sync...
 [2025-07-20 13:28:49] [INFO] Changes found:
 [2025-07-20 13:28:49] [INFO]    M logs/realtime-sync.log
+[2025-07-20 13:28:49] [INFO] Added all changes
+[2025-07-20 13:28:49] [INFO] Changes detected. Starting sync...
+[2025-07-20 13:34:34] [INFO] Changes detected. Starting sync...
+[2025-07-20 13:34:34] [INFO] Changes found:
+[2025-07-20 13:34:34] [INFO]    M core/backend/src/main/java/com/lsx0500/service/GeneratorService.java
+[2025-07-20 13:34:34] [INFO]    M core/backend/target/classes/com/lsx0500/service/GeneratorService.class
+[2025-07-20 13:34:34] [INFO]    M logs/realtime-sync.log
+[2025-07-20 13:34:34] [INFO]   ?? check-deployment.ps1
+[2025-07-20 13:34:34] [INFO]   ?? deployment-wait.html
+[2025-07-20 13:34:34] [INFO]   ?? sync-ultra-fast.ps1

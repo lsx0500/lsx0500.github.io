@@ -49,11 +49,14 @@ public class GeneratorService {
         // 7. 构建响应
         GenerateResponse response = new GenerateResponse();
         response.setSuccess(true);
-        response.setMessage("图案生成成功！");
+        response.setMessage("图案生成成功！正在部署...");
         response.setFileUrl(GITHUB_BASE_URL + "/" + OUTPUT_DIR + "/" + filename);
         response.setGitUrl("https://github.com/lsx0500/lsx0500.github.io/blob/main/" + OUTPUT_DIR + "/" + filename);
         // 使用GitHub Pages URL，确保用户可以在任何设备上查看
         response.setPreviewUrl(GITHUB_BASE_URL + "/" + OUTPUT_DIR + "/" + filename);
+        
+        // 8. 启动部署检查（异步）
+        checkDeploymentStatus(filename);
         
         return response;
     }
@@ -110,5 +113,44 @@ public class GeneratorService {
             Thread.currentThread().interrupt();
             throw new IOException("Git操作被中断", e);
         }
+    }
+    
+    private void checkDeploymentStatus(String filename) {
+        // 异步启动部署检查
+        new Thread(() -> {
+            try {
+                System.out.println("🚀 启动部署检查: " + filename);
+                
+                // 等待5秒让GitHub处理推送
+                Thread.sleep(5000);
+                
+                // 启动PowerShell脚本检查部署状态
+                ProcessBuilder pb = new ProcessBuilder(
+                    "powershell", "-ExecutionPolicy", "Bypass", "-File", 
+                    PROJECT_ROOT + "/check-deployment.ps1", "-FileName", filename
+                );
+                pb.directory(Paths.get(PROJECT_ROOT).toFile());
+                Process process = pb.start();
+                
+                // 读取输出
+                java.io.BufferedReader reader = new java.io.BufferedReader(
+                    new java.io.InputStreamReader(process.getInputStream())
+                );
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println("[Deployment] " + line);
+                }
+                
+                int exitCode = process.waitFor();
+                if (exitCode == 0) {
+                    System.out.println("✅ 部署检查完成: " + filename);
+                } else {
+                    System.out.println("❌ 部署检查失败: " + filename);
+                }
+                
+            } catch (Exception e) {
+                System.out.println("❌ 部署检查错误: " + e.getMessage());
+            }
+        }).start();
     }
 } 
