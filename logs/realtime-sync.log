@@ -1566,3 +1566,12 @@
 [2025-07-20 12:29:40] [INFO] Changes detected. Starting sync...
 [2025-07-20 12:29:40] [INFO] Changes found:
 [2025-07-20 12:29:40] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:29:40] [INFO] Added all changes
+[2025-07-20 12:29:40] [INFO] Committed: Auto-sync: 2025-07-20 12:29:40
+[2025-07-20 12:29:41] [INFO] Push successful to branch: newBranch
+[2025-07-20 12:29:42] [INFO] Push successful to main branch
+[2025-07-20 12:29:54] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:29:54] [INFO] Changes found:
+[2025-07-20 12:29:54] [INFO]    M core/backend/src/main/java/com/lsx0500/service/GeneratorService.java
+[2025-07-20 12:29:54] [INFO]    M core/backend/target/classes/com/lsx0500/service/GeneratorService.class
+[2025-07-20 12:29:54] [INFO]    M logs/realtime-sync.log
