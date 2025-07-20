@@ -1616,3 +1616,11 @@
 [2025-07-20 12:30:43] [INFO] Changes detected. Starting sync...
 [2025-07-20 12:30:43] [INFO] Changes found:
 [2025-07-20 12:30:43] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:30:43] [INFO] Added all changes
+[2025-07-20 12:30:43] [INFO] Committed: Auto-sync: 2025-07-20 12:30:43
+[2025-07-20 12:30:45] [INFO] Push successful to branch: newBranch
+[2025-07-20 12:30:45] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:30:45] [INFO] Changes found:
+[2025-07-20 12:30:45] [INFO]    M core/backend/src/main/java/com/lsx0500/controller/GeneratorController.java
+[2025-07-20 12:30:45] [INFO]    M core/backend/target/classes/com/lsx0500/controller/GeneratorController.class
+[2025-07-20 12:30:45] [INFO]    M logs/realtime-sync.log

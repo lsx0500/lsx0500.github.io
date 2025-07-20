@@ -18,7 +18,7 @@ public class GeneratorController {
     private GeneratorService generatorService;
 
     @PostMapping("/pattern")
-    public ResponseEntity<GenerateResponse> generatePattern(@Valid @RequestBody GenerateRequest request) {
+    public ResponseEntity<GenerateResponse> generatePattern(@RequestBody GenerateRequest request) {
         try {
             GenerateResponse response = generatorService.generatePattern(request);
             return ResponseEntity.ok(response);
