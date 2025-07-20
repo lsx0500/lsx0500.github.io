@@ -61,11 +61,16 @@ public class GeneratorService {
         String templatePath = TEMPLATES_DIR + "/" + patternType + "/" + patternType + "_01.html";
         Path path = Paths.get(PROJECT_ROOT, templatePath);
         
+        System.out.println("尝试读取模板文件: " + path.toString());
+        System.out.println("文件是否存在: " + Files.exists(path));
+        
         if (!Files.exists(path)) {
             throw new IOException("模板文件不存在: " + path.toString());
         }
         
-        return new String(Files.readAllBytes(path), "UTF-8");
+        String content = new String(Files.readAllBytes(path), "UTF-8");
+        System.out.println("模板文件读取成功，内容长度: " + content.length());
+        return content;
     }
 
     private String replaceTemplateVariables(String template, GenerateRequest request) {
