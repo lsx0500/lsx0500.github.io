@@ -213,12 +213,14 @@
                 <div class="status-icon">⏳</div>
                 <div class="status-text">正在生成图案文件...</div>
                 <div class="spinner"></div>
-                <div class="countdown" id="countdown">30</div>
                 <div class="progress-container">
                     <div class="progress-bar">
                         <div class="progress-fill" id="progressFill"></div>
                     </div>
                     <div id="progressText">准备中...</div>
+                    <div id="checkStatus" style="margin-top: 10px; font-size: 14px; color: #666;">
+                        检查次数: <span id="checkCount">0</span> / <span id="maxChecks">60</span>
+                    </div>
                 </div>
                 <div class="info">
                     <h3>📋 部署流程</h3>
@@ -226,6 +228,7 @@
                     <p>2. 上传到GitHub仓库</p>
                     <p>3. 等待GitHub Pages部署</p>
                     <p>4. 验证文件可访问性</p>
+                    <p style="color: #ff6b6b; font-weight: bold;">⏰ 预计等待时间: 2-5分钟</p>
                 </div>
             </div>
 
@@ -261,9 +264,10 @@
                 <div class="status-text warning">部署超时</div>
                 <div class="info">
                     <h3>⏰ 部署时间较长</h3>
-                    <p>GitHub Pages部署可能需要几分钟时间，您可以稍后手动检查。</p>
+                    <p>GitHub Pages部署可能需要几分钟时间，已检查 <span id="finalCheckCount">0</span> 次。</p>
+                    <p>您可以稍后手动检查部署状态，或点击下方按钮继续等待。</p>
                 </div>
-                <a href="#" class="btn" id="checkAgainBtn">🔍 再次检查</a>
+                <a href="#" class="btn" id="checkAgainBtn">🔍 继续检查</a>
                 <button class="btn secondary" onclick="goBack()">← 返回</button>
             </div>
         </div>
@@ -289,14 +293,21 @@
 
         // 状态管理
         let currentState = 'waiting';
-        let countdown = 30;
         let progress = 0;
         let checkInterval;
         let deploymentUrl = '';
+        let checkCount = 0;
+        const maxChecks = 60; // 最多检查60次（约5分钟）
+        const checkIntervalMs = 1000; // 每5秒检查一次
         
-        // 检测移动设备
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        // 检测移动设备 - 更准确的检测
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet/i.test(navigator.userAgent) || 
+                        window.innerWidth <= 768 || 
+                        ('ontouchstart' in window);
         console.log('设备类型:', isMobile ? '移动设备' : '桌面设备');
+        console.log('用户代理:', navigator.userAgent);
+        console.log('屏幕宽度:', window.innerWidth);
+        console.log('触摸支持:', 'ontouchstart' in window);
 
         // 初始化
         window.addEventListener('load', () => {
@@ -319,65 +330,67 @@
             console.log('📁 生成文件名:', generatedFilename);
             console.log('🌐 部署URL:', deploymentUrl);
 
-            // 开始倒计时和进度条
-            startCountdown();
+            // 开始进度条和状态检查
             startProgress();
 
-            // 模拟部署流程
-            simulateDeployment();
+            // 创建并部署文件
+            createAndDeployFile();
         }
 
-        // 开始倒计时
-        function startCountdown() {
-            const countdownElement = document.getElementById('countdown');
-            const countdownInterval = setInterval(() => {
-                countdown--;
-                countdownElement.textContent = countdown;
-                
-                if (countdown <= 0) {
-                    clearInterval(countdownInterval);
-                    showTimeout();
-                }
-            }, 1000);
-        }
-
-        // 开始进度条
+        // 开始进度条和状态检查
         function startProgress() {
             const progressFill = document.getElementById('progressFill');
             const progressText = document.getElementById('progressText');
-            const progressInterval = setInterval(() => {
-                progress += 2;
+            const checkCountElement = document.getElementById('checkCount');
+            const maxChecksElement = document.getElementById('maxChecks');
+            
+            // 更新最大检查次数显示
+            maxChecksElement.textContent = maxChecks;
+            
+            // 开始定期检查部署状态
+            checkInterval = setInterval(() => {
+                checkCount++;
+                checkCountElement.textContent = checkCount;
+                
+                // 更新进度条（基于检查次数）
+                progress = Math.min((checkCount / maxChecks) * 100, 95);
                 progressFill.style.width = `${progress}%`;
                 
-                if (progress <= 30) {
+                // 更新进度文本
+                if (checkCount <= 6) {
                     progressText.textContent = '生成图案文件...';
-                } else if (progress <= 60) {
+                } else if (checkCount <= 12) {
                     progressText.textContent = '上传到GitHub...';
-                } else if (progress <= 90) {
+                } else if (checkCount <= 36) {
                     progressText.textContent = '等待GitHub Pages部署...';
                 } else {
                     progressText.textContent = '验证部署状态...';
                 }
                 
-                if (progress >= 100) {
-                    clearInterval(progressInterval);
-                    checkDeploymentStatus();
+                // 检查部署状态
+                checkDeploymentStatus();
+                
+                // 如果达到最大检查次数，显示超时
+                if (checkCount >= maxChecks) {
+                    clearInterval(checkInterval);
+                    showTimeout();
                 }
-            }, 600);
+            }, checkIntervalMs);
+            
+            // 立即执行第一次检查
+            setTimeout(() => {
+                checkDeploymentStatus();
+            }, 2000);
         }
 
-        // 模拟部署流程
+        // 模拟部署流程（已移除，改为实际检查）
         function simulateDeployment() {
-            // 模拟部署时间
-            setTimeout(() => {
-                // 这里可以添加实际的部署逻辑
-                console.log('模拟部署完成');
-            }, 15000);
+            console.log('模拟部署流程已移除，改为实际状态检查');
         }
 
         // 检查部署状态
         function checkDeploymentStatus() {
-            console.log('🔍 检查部署状态...');
+            console.log('🔍 检查部署状态... (第', checkCount, '次检查)');
             
             // 创建测试文件URL
             const testUrl = deploymentUrl;
@@ -388,17 +401,17 @@
                 .then(response => {
                     console.log('📡 响应状态:', response.status, response.ok);
                     if (response.ok) {
-                        console.log('✅ 文件已存在，显示成功状态');
+                        console.log('✅ 文件已存在，部署成功！');
+                        clearInterval(checkInterval);
                         showSuccess();
                     } else {
-                        console.log('❌ 文件不存在，开始创建...');
-                        // 如果文件不存在，创建并部署
-                        createAndDeployFile();
+                        console.log('❌ 文件不存在，继续等待... (', checkCount, '/', maxChecks, ')');
+                        // 继续等待，不创建文件（因为这是真实的GitHub Pages部署检查）
                     }
                 })
                 .catch(error => {
-                    console.log('❌ 检查失败，开始创建...', error);
-                    createAndDeployFile();
+                    console.log('❌ 检查失败，继续等待... (', checkCount, '/', maxChecks, ')', error);
+                    // 继续等待，不创建文件
                 });
         }
 
@@ -410,14 +423,17 @@
             const htmlContent = generateHTMLContent();
             console.log('📄 HTML内容长度:', htmlContent.length);
             
-            // 创建Blob URL用于下载
+            // 创建Data URL用于移动端查看，Blob URL用于桌面端下载
             const blob = new Blob([htmlContent], { type: 'text/html' });
-            const downloadUrl = URL.createObjectURL(blob);
-            console.log('🔗 下载URL:', downloadUrl);
+            const blobUrl = URL.createObjectURL(blob);
+            const dataUrl = 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent);
+            
+            console.log('🔗 Blob URL:', blobUrl);
+            console.log('🔗 Data URL长度:', dataUrl.length);
             
             // 更新成功状态的链接
-            document.getElementById('viewPatternBtn').href = downloadUrl;
-            document.getElementById('downloadBtn').href = downloadUrl;
+            document.getElementById('viewPatternBtn').href = isMobile ? dataUrl : blobUrl;
+            document.getElementById('downloadBtn').href = blobUrl;
             document.getElementById('downloadBtn').download = filename || `${patternType}_${Date.now()}.html`;
             
             console.log('🔗 查看按钮链接已更新');
@@ -435,28 +451,30 @@
                 e.preventDefault();
                 console.log('🎯 点击查看按钮');
                 console.log('📱 设备类型:', isMobile ? '移动设备' : '桌面设备');
-                console.log('🔗 Blob URL:', downloadUrl);
+                
+                const viewUrl = isMobile ? dataUrl : blobUrl;
+                console.log('🔗 查看URL类型:', isMobile ? 'Data URL' : 'Blob URL');
                 
                 try {
                     if (isMobile) {
-                        console.log('📱 移动设备：直接在当前窗口打开');
-                        // 移动设备：直接在当前窗口打开
-                        window.location.href = downloadUrl;
+                        console.log('📱 移动设备：使用Data URL在当前窗口打开');
+                        // 移动设备：使用Data URL在当前窗口打开
+                        window.location.href = viewUrl;
                     } else {
-                        console.log('💻 桌面设备：尝试在新窗口打开');
+                        console.log('💻 桌面设备：尝试在新窗口打开Blob URL');
                         // 桌面设备：尝试在新窗口打开
-                        const newWindow = window.open(downloadUrl, '_blank');
+                        const newWindow = window.open(viewUrl, '_blank');
                         if (!newWindow) {
                             console.log('⚠️ 弹窗被阻止，在当前窗口打开');
                             // 如果弹窗被阻止，在当前窗口打开
-                            window.location.href = downloadUrl;
+                            window.location.href = viewUrl;
                         }
                     }
                 } catch (error) {
                     console.error('❌ 打开图案失败:', error);
                     // 备用方案：创建临时链接并点击
                     const tempLink = document.createElement('a');
-                    tempLink.href = downloadUrl;
+                    tempLink.href = viewUrl;
                     tempLink.target = '_blank';
                     tempLink.style.display = 'none';
                     document.body.appendChild(tempLink);
@@ -466,21 +484,26 @@
                 }
             });
             
-            // 模拟部署完成
-            setTimeout(() => {
-                console.log('✅ 模拟部署完成，显示成功状态');
-                showSuccess();
-            }, 2000);
+            console.log('✅ 文件创建完成，开始等待GitHub Pages部署...');
         }
 
         // 生成HTML内容
         function generateHTMLContent() {
+            // 调试：显示当前使用的参数
+            console.log('🎨 生成图案参数:', {
+                patternType,
+                userText,
+                primaryColor,
+                bgColor,
+                filename
+            });
+            
             let patternHTML = '';
             
             if (patternType === 'heart') {
                 patternHTML = `
                     <div class="heart-container">
-                        <div class="heart" style="color: ${primaryColor}; background: ${bgColor};">
+                        <div class="heart">
                             <div class="heart-text">${userText}</div>
                         </div>
                     </div>
@@ -535,7 +558,7 @@
             } else if (patternType === 'star') {
                 patternHTML = `
                     <div class="star-container">
-                        <div class="star" style="color: ${primaryColor}; background: ${bgColor};">
+                        <div class="star">
                             <div class="star-text">${userText}</div>
                         </div>
                     </div>
@@ -596,7 +619,7 @@
             } else if (patternType === 'text') {
                 patternHTML = `
                     <div class="text-container">
-                        <div class="animated-text" style="color: ${primaryColor}; background: ${bgColor};">
+                        <div class="animated-text">
                             ${userText}
                         </div>
                     </div>
@@ -612,6 +635,7 @@
                             font-size: 48px;
                             font-weight: bold;
                             text-align: center;
+                            color: ${primaryColor};
                             animation: textGlow 2s ease-in-out infinite;
                             text-shadow: 0 0 10px ${primaryColor};
                         }
@@ -666,6 +690,8 @@
             currentState = 'timeout';
             document.getElementById('waitingState').classList.add('hidden');
             document.getElementById('timeoutState').classList.remove('hidden');
+            document.getElementById('finalCheckCount').textContent = checkCount;
+            console.log('⏰ 部署超时，已达到最大检查次数:', maxChecks);
         }
 
         // 重试部署
@@ -678,11 +704,18 @@
             window.location.href = 'index.html';
         }
 
-        // 再次检查部署状态
+        // 继续检查部署状态
         document.getElementById('checkAgainBtn').addEventListener('click', () => {
             document.getElementById('timeoutState').classList.add('hidden');
             document.getElementById('waitingState').classList.remove('hidden');
-            startDeployment();
+            
+            // 重置检查计数
+            checkCount = 0;
+            progress = 0;
+            
+            // 重新开始检查
+            startProgress();
+            console.log('🔄 重新开始检查部署状态');
         });
         
         // 测试按钮事件

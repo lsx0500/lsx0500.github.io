@@ -386,8 +386,8 @@
                 success: true,
                 message: '图案生成成功！',
                 filename: filename,
-                previewUrl: url,
-                fileUrl: url
+                previewUrl: waitUrl,
+                fileUrl: waitUrl
             };
         }
 
@@ -400,7 +400,7 @@
             if (patternType === 'heart') {
                 patternHTML = `
                     <div class="heart-container">
-                        <div class="heart" style="color: ${primaryColor}; background: ${bgColor};">
+                        <div class="heart">
                             <div class="heart-text">${userText}</div>
                         </div>
                     </div>
@@ -455,7 +455,7 @@
             } else if (patternType === 'star') {
                 patternHTML = `
                     <div class="star-container">
-                        <div class="star" style="color: ${primaryColor}; background: ${bgColor};">
+                        <div class="star">
                             <div class="star-text">${userText}</div>
                         </div>
                     </div>
@@ -516,7 +516,7 @@
             } else if (patternType === 'text') {
                 patternHTML = `
                     <div class="text-container">
-                        <div class="animated-text" style="color: ${primaryColor}; background: ${bgColor};">
+                        <div class="animated-text">
                             ${userText}
                         </div>
                     </div>
@@ -532,6 +532,7 @@
                             font-size: 48px;
                             font-weight: bold;
                             text-align: center;
+                            color: ${primaryColor};
                             animation: textGlow 2s ease-in-out infinite;
                             text-shadow: 0 0 10px ${primaryColor};
                         }
