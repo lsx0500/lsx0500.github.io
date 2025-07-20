@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class GeneratorService {
 
-    private static final String PROJECT_ROOT = System.getProperty("user.dir") + "/..";
+    private static final String PROJECT_ROOT = System.getProperty("user.dir") + "/../..";
     private static final String TEMPLATES_DIR = "effects";
     private static final String OUTPUT_DIR = "core/frontend/generated";
     private static final String GITHUB_BASE_URL = "https://lsx0500.github.io";
