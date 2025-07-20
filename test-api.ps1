@@ -18,7 +18,7 @@ try {
         size = "medium"
     } | ConvertTo-Json
     
-    $response = Invoke-RestMethod -Uri "http://localhost:8080/api/generate" -Method POST -Body $body -ContentType "application/json" -TimeoutSec 10
+    $response = Invoke-RestMethod -Uri "http://localhost:8080/api/generate/pattern" -Method POST -Body $body -ContentType "application/json" -TimeoutSec 10
     Write-Host "✓ 图案生成成功" -ForegroundColor Green
     Write-Host "   消息: $($response.message)" -ForegroundColor Cyan
     Write-Host "   文件: $($response.fileName)" -ForegroundColor Cyan
