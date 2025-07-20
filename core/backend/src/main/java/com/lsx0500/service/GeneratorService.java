@@ -74,10 +74,15 @@ public class GeneratorService {
     }
 
     private String replaceTemplateVariables(String template, GenerateRequest request) {
+        // 安全地获取值，避免null值
+        String userText = request.getUserText() != null ? request.getUserText() : "";
+        String primaryColor = request.getPrimaryColor() != null ? request.getPrimaryColor() : "#ff0000";
+        String bgColor = request.getBgColor() != null ? request.getBgColor() : "#ffffff";
+        
         return template
-                .replace("{{USER_TEXT}}", request.getUserText())
-                .replace("{{PRIMARY_COLOR}}", request.getPrimaryColor())
-                .replace("{{BG_COLOR}}", request.getBgColor());
+                .replace("{{USER_TEXT}}", userText)
+                .replace("{{PRIMARY_COLOR}}", primaryColor)
+                .replace("{{BG_COLOR}}", bgColor);
     }
 
     private void pushToGit(String filename) throws IOException {
