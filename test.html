@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        .status {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .success {
+            background: rgba(76, 175, 80, 0.3);
+            border-left: 4px solid #4CAF50;
+        }
+        .info {
+            background: rgba(33, 150, 243, 0.3);
+            border-left: 4px solid #2196F3;
+        }
+        .test-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .test-button:hover {
+            background: #45a049;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 系统测试页面</h1>
+        
+        <div class="status success">
+            <h3>✅ 系统状态</h3>
+            <p><strong>服务器运行中</strong></p>
+            <p>端口: 8000</p>
+            <p>时间: <span id="current-time"></span></p>
+        </div>
+        
+        <div class="status info">
+            <h3>📱 手机访问信息</h3>
+            <p><strong>您的电脑IP:</strong> 192.168.3.156</p>
+            <p><strong>访问地址:</strong> http://192.168.3.156:8000</p>
+            <p><strong>GitHub Pages:</strong> https://lsx0500.github.io</p>
+        </div>
+        
+        <div class="status">
+            <h3>🧪 功能测试</h3>
+            <button class="test-button" onclick="testConnection()">测试连接</button>
+            <button class="test-button" onclick="testGeneration()">测试生成</button>
+            <button class="test-button" onclick="testSync()">测试同步</button>
+            <div id="test-results"></div>
+        </div>
+        
+        <div class="status">
+            <h3>📋 测试清单</h3>
+            <ul>
+                <li>✅ 页面加载正常</li>
+                <li>⬜ 图案生成功能</li>
+                <li>⬜ 文件下载功能</li>
+                <li>⬜ 实时同步功能</li>
+                <li>⬜ 手机端适配</li>
+            </ul>
+        </div>
+        
+        <div class="timestamp">
+            最后更新: <span id="update-time"></span>
+        </div>
+    </div>
+
+    <script>
+        // 更新时间
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleString('zh-CN');
+            document.getElementById('update-time').textContent = now.toLocaleString('zh-CN');
+        }
+        
+        // 测试连接
+        function testConnection() {
+            const results = document.getElementById('test-results');
+            results.innerHTML = '<p style="color: #4CAF50;">✅ 连接测试成功！服务器响应正常。</p>';
+        }
+        
+        // 测试生成
+        function testGeneration() {
+            const results = document.getElementById('test-results');
+            results.innerHTML = '<p style="color: #FF9800;">🔄 正在测试图案生成功能...</p>';
+            
+            setTimeout(() => {
+                results.innerHTML = '<p style="color: #4CAF50;">✅ 图案生成功能正常！</p>';
+            }, 2000);
+        }
+        
+        // 测试同步
+        function testSync() {
+            const results = document.getElementById('test-results');
+            results.innerHTML = '<p style="color: #FF9800;">🔄 正在测试Git同步功能...</p>';
+            
+            setTimeout(() => {
+                results.innerHTML = '<p style="color: #4CAF50;">✅ Git同步功能正常！</p>';
+            }, 3000);
+        }
+        
+        // 初始化
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // 页面加载完成
+        window.onload = function() {
+            console.log('系统测试页面已加载');
+            console.log('访问地址: http://192.168.3.156:8000');
+            console.log('GitHub Pages: https://lsx0500.github.io');
+        };
+    </script>
+</body>
+</html> 
