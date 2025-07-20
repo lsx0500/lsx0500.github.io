@@ -240,3 +240,9 @@
 [2025-07-20 11:39:12] [INFO] Changes found:
 [2025-07-20 11:39:12] [INFO]    M logs/realtime-sync.log
 [2025-07-20 11:39:12] [INFO]    M sync-realtime.ps1
+[2025-07-20 11:39:12] [INFO] Added all changes
+[2025-07-20 11:39:12] [INFO] Committed: Auto-sync: 2025-07-20 11:39:12
+[2025-07-20 11:39:14] [INFO] Push successful
+[2025-07-20 11:39:24] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:39:24] [INFO] Changes found:
+[2025-07-20 11:39:24] [INFO]    M logs/realtime-sync.log
