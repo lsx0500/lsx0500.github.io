@@ -4670,3 +4670,10 @@
 [2025-07-20 13:51:24] [INFO] Changes found:
 [2025-07-20 13:51:24] [INFO]    M logs/realtime-sync.log
 [2025-07-20 13:51:24] [INFO] Changes detected. Starting sync...
+[2025-07-20 13:51:24] [INFO] Changes found:
+[2025-07-20 13:51:24] [INFO] Added all changes
+[2025-07-20 13:54:32] [INFO] Changes detected. Starting sync...
+[2025-07-20 13:54:32] [INFO] Changes found:
+[2025-07-20 13:54:32] [INFO]    M deployment-wait.html
+[2025-07-20 13:54:32] [INFO]    M logs/realtime-sync.log
+[2025-07-20 13:54:32] [INFO]   ?? test-complete-flow.ps1

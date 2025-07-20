@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>部署等待 - 图案生成器</title>
+    <title>部署等待中 - GitHub Pages</title>
     <style>
         * {
             margin: 0;
@@ -12,321 +12,334 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
         }
 
-        .deployment-container {
-            background: white;
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             padding: 40px;
             text-align: center;
             max-width: 500px;
             width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .deployment-icon {
-            font-size: 80px;
+        .icon {
+            font-size: 60px;
             margin-bottom: 20px;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
+            0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
 
-        .deployment-title {
+        h1 {
             font-size: 28px;
-            color: #333;
             margin-bottom: 10px;
-            font-weight: bold;
+            font-weight: 300;
         }
 
-        .deployment-subtitle {
+        .subtitle {
             font-size: 16px;
-            color: #666;
+            opacity: 0.8;
             margin-bottom: 30px;
         }
 
-        .countdown {
+        .timer {
             font-size: 48px;
             font-weight: bold;
-            color: #667eea;
             margin: 20px 0;
             font-family: 'Courier New', monospace;
         }
 
-        .progress-bar {
-            width: 100%;
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
             height: 8px;
-            background: #f0f0f0;
-            border-radius: 4px;
-            overflow: hidden;
             margin: 20px 0;
+            overflow: hidden;
         }
 
-        .progress-fill {
+        .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 4px;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            border-radius: 10px;
             transition: width 1s ease;
             width: 0%;
         }
 
-        .status-message {
+        .status {
             font-size: 14px;
-            color: #888;
-            margin: 20px 0;
-            min-height: 20px;
+            opacity: 0.8;
+            margin: 15px 0;
         }
 
-        .deployment-steps {
+        .steps {
             text-align: left;
             margin: 20px 0;
+            font-size: 14px;
         }
 
         .step {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 8px;
-            background: #f8f9fa;
-        }
-
-        .step-icon {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        .step.completed {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .step.pending {
-            background: #fff3cd;
-            color: #856404;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
         .step.active {
-            background: #cce5ff;
-            color: #004085;
+            background: rgba(76, 175, 80, 0.3);
+            border-left: 4px solid #4CAF50;
         }
 
-        .view-button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+        .step.completed {
+            background: rgba(76, 175, 80, 0.2);
+            opacity: 0.7;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 30px;
             border-radius: 25px;
             font-size: 16px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.3s ease;
-            display: none;
+            transition: all 0.3s ease;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .view-button:hover {
+        .btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .auto-refresh {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #999;
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        @media (max-width: 480px) {
-            .deployment-container {
-                padding: 20px;
-            }
-            
-            .deployment-title {
-                font-size: 24px;
-            }
-            
-            .countdown {
-                font-size: 36px;
-            }
+        .loading-dots {
+            display: inline-block;
+        }
+
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        .success-message {
+            display: none;
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .error-message {
+            display: none;
+            color: #f44336;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <div class="deployment-container">
-        <div class="deployment-icon">🚀</div>
-        <h1 class="deployment-title">正在部署您的图案</h1>
-        <p class="deployment-subtitle">请稍候，我们正在将您的作品上传到云端...</p>
+    <div class="container">
+        <div class="icon">🚀</div>
+        <h1>GitHub Pages 部署中</h1>
+        <div class="subtitle">正在将您的图案部署到云端，请稍候...</div>
         
-        <div class="countdown" id="countdown">02:00</div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+        <div class="timer" id="timer">08:00</div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
         
-        <div class="deployment-steps" id="deploymentSteps">
-            <div class="step active" id="step1">
-                <span class="step-icon">⏳</span>
-                <span>正在上传文件到GitHub...</span>
-            </div>
-            <div class="step pending" id="step2">
-                <span class="step-icon">⏳</span>
-                <span>等待GitHub Pages部署...</span>
-            </div>
-            <div class="step pending" id="step3">
-                <span class="step-icon">⏳</span>
-                <span>验证部署状态...</span>
-            </div>
+        <div class="status" id="status">正在检查部署状态<span class="loading-dots"></span></div>
+        
+        <div class="steps">
+            <div class="step active" id="step1">✅ 文件已生成并推送到GitHub</div>
+            <div class="step" id="step2">⏳ 等待GitHub Pages构建</div>
+            <div class="step" id="step3">⏳ 等待CDN缓存更新</div>
+            <div class="step" id="step4">⏳ 验证文件可访问性</div>
         </div>
         
-        <div class="status-message" id="statusMessage">
-            正在检查部署状态...
+        <div class="success-message" id="successMessage">
+            🎉 部署成功！您的图案现在可以在线访问了
         </div>
         
-        <button class="view-button" id="viewButton" onclick="viewPattern()">
-            🎨 查看我的图案
+        <div class="error-message" id="errorMessage">
+            ⚠️ 部署可能还在进行中，请稍后再试
+        </div>
+        
+        <button class="btn" id="viewBtn" style="display: none;" onclick="viewPattern()">
+            查看图案效果
         </button>
         
-        <div class="auto-refresh">
-            页面将自动刷新以检查部署状态
-        </div>
+        <button class="btn" id="retryBtn" style="display: none;" onclick="retryCheck()">
+            重新检查
+        </button>
     </div>
 
     <script>
-        let countdown = 120; // 2分钟倒计时
-        let deploymentUrl = '';
+        // 获取URL参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const patternUrl = urlParams.get('url');
+        const filename = urlParams.get('filename');
+        
+        // 部署配置
+        const totalTime = 8 * 60; // 8分钟
+        let elapsedTime = 0;
         let checkInterval;
+        let deploymentCheckInterval;
         
-        // 从URL参数获取部署信息
-        function getDeploymentInfo() {
-            const urlParams = new URLSearchParams(window.location.search);
-            deploymentUrl = urlParams.get('url') || '';
-            const filename = urlParams.get('filename') || '';
-            return { deploymentUrl, filename };
-        }
-        
-        // 更新倒计时
-        function updateCountdown() {
-            const minutes = Math.floor(countdown / 60);
-            const seconds = countdown % 60;
-            document.getElementById('countdown').textContent = 
-                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // 更新进度条
-            const progress = ((120 - countdown) / 120) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-            
-            if (countdown <= 0) {
-                clearInterval(checkInterval);
-                showDeploymentComplete();
-            }
-        }
-        
-        // 更新部署步骤
-        function updateStep(stepNumber, status) {
-            const step = document.getElementById(`step${stepNumber}`);
-            step.className = `step ${status}`;
-            
-            const icon = step.querySelector('.step-icon');
-            if (status === 'completed') {
-                icon.textContent = '✅';
-            } else if (status === 'active') {
-                icon.textContent = '⏳';
-            } else {
-                icon.textContent = '⏳';
-            }
-        }
-        
-        // 检查部署状态
-        async function checkDeploymentStatus() {
-            const { deploymentUrl, filename } = getDeploymentInfo();
-            
-            if (!deploymentUrl) {
-                document.getElementById('statusMessage').textContent = '错误：未找到部署URL';
+        // 初始化
+        function init() {
+            if (!patternUrl || !filename) {
+                showError('缺少必要的参数');
                 return;
             }
             
-            try {
-                const response = await fetch(deploymentUrl, { method: 'HEAD' });
-                if (response.ok) {
-                    showDeploymentComplete();
-                    return true;
-                } else {
-                    document.getElementById('statusMessage').textContent = 
-                        `部署中... (HTTP ${response.status})`;
-                }
-            } catch (error) {
-                document.getElementById('statusMessage').textContent = 
-                    '正在等待GitHub Pages部署...';
-            }
-            
-            return false;
+            startTimer();
+            startDeploymentCheck();
         }
         
-        // 显示部署完成
-        function showDeploymentComplete() {
-            updateStep(1, 'completed');
-            updateStep(2, 'completed');
-            updateStep(3, 'completed');
+        // 开始倒计时
+        function startTimer() {
+            const timerElement = document.getElementById('timer');
+            const progressBar = document.getElementById('progressBar');
             
-            document.getElementById('statusMessage').textContent = '✅ 部署完成！您的图案已可访问';
-            document.getElementById('viewButton').style.display = 'inline-block';
+            const interval = setInterval(() => {
+                elapsedTime++;
+                const remaining = totalTime - elapsedTime;
+                
+                if (remaining <= 0) {
+                    clearInterval(interval);
+                    timerElement.textContent = '00:00';
+                    progressBar.style.width = '100%';
+                    showTimeout();
+                    return;
+                }
+                
+                const minutes = Math.floor(remaining / 60);
+                const seconds = remaining % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                const progress = ((totalTime - remaining) / totalTime) * 100;
+                progressBar.style.width = progress + '%';
+            }, 1000);
+        }
+        
+        // 开始部署检查
+        function startDeploymentCheck() {
+            let checkCount = 0;
+            const maxChecks = 96; // 8分钟内每5秒检查一次
             
-            // 停止倒计时
-            clearInterval(checkInterval);
-            document.getElementById('countdown').textContent = '✅ 完成';
-            document.getElementById('progressFill').style.width = '100%';
+            deploymentCheckInterval = setInterval(() => {
+                checkCount++;
+                updateStatus(`正在检查部署状态 (${checkCount}/${maxChecks})`);
+                
+                // 模拟部署阶段
+                if (checkCount <= 24) {
+                    updateStep(1, 'completed');
+                    updateStep(2, 'active');
+                } else if (checkCount <= 48) {
+                    updateStep(2, 'completed');
+                    updateStep(3, 'active');
+                } else if (checkCount <= 72) {
+                    updateStep(3, 'completed');
+                    updateStep(4, 'active');
+                }
+                
+                // 检查文件是否可访问
+                checkFileAccess();
+                
+                if (checkCount >= maxChecks) {
+                    clearInterval(deploymentCheckInterval);
+                    showTimeout();
+                }
+            }, 5000); // 每5秒检查一次
+        }
+        
+        // 检查文件访问
+        function checkFileAccess() {
+            fetch(patternUrl, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        showSuccess();
+                    }
+                })
+                .catch(error => {
+                    console.log('文件还未可访问:', error);
+                });
+        }
+        
+        // 更新状态
+        function updateStatus(message) {
+            document.getElementById('status').innerHTML = message + '<span class="loading-dots"></span>';
+        }
+        
+        // 更新步骤
+        function updateStep(stepNumber, status) {
+            const step = document.getElementById(`step${stepNumber}`);
+            step.className = `step ${status}`;
+        }
+        
+        // 显示成功
+        function showSuccess() {
+            clearInterval(deploymentCheckInterval);
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('viewBtn').style.display = 'inline-block';
+            updateStatus('✅ 部署完成！');
+            updateStep(4, 'completed');
+        }
+        
+        // 显示超时
+        function showTimeout() {
+            document.getElementById('errorMessage').style.display = 'block';
+            document.getElementById('retryBtn').style.display = 'inline-block';
+            updateStatus('⏰ 等待时间已到，但部署可能还在进行中');
+        }
+        
+        // 显示错误
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorMessage').style.display = 'block';
         }
         
         // 查看图案
         function viewPattern() {
-            const { deploymentUrl } = getDeploymentInfo();
-            if (deploymentUrl) {
-                window.open(deploymentUrl, '_blank');
-            }
+            window.open(patternUrl, '_blank');
         }
         
-        // 初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            const { deploymentUrl, filename } = getDeploymentInfo();
-            
-            if (!deploymentUrl) {
-                document.getElementById('statusMessage').textContent = '错误：未找到部署URL';
-                return;
-            }
-            
-            // 开始倒计时
-            updateCountdown();
-            checkInterval = setInterval(() => {
-                countdown--;
-                updateCountdown();
-                
-                // 每10秒检查一次部署状态
-                if (countdown % 10 === 0) {
-                    checkDeploymentStatus();
-                }
-                
-                // 更新步骤状态
-                if (countdown <= 90) {
-                    updateStep(1, 'completed');
-                    updateStep(2, 'active');
-                }
-                if (countdown <= 60) {
-                    updateStep(2, 'completed');
-                    updateStep(3, 'active');
-                }
-                
-            }, 1000);
-            
-            // 立即检查一次
-            checkDeploymentStatus();
-        });
+        // 重新检查
+        function retryCheck() {
+            location.reload();
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('load', init);
     </script>
 </body>
 </html> 
