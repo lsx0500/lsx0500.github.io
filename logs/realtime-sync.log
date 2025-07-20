@@ -960,3 +960,11 @@
 [2025-07-20 12:15:22] [INFO] Changes detected. Starting sync...
 [2025-07-20 12:15:22] [INFO] Changes found:
 [2025-07-20 12:15:22] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:15:22] [INFO] Added all changes
+[2025-07-20 12:15:22] [INFO] Committed: Auto-sync: 2025-07-20 12:15:22
+[2025-07-20 12:15:23] [INFO] Push successful to branch: newBranch
+[2025-07-20 12:15:52] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:15:52] [INFO] Changes found:
+[2025-07-20 12:15:52] [INFO]    M .vscode/settings.json
+[2025-07-20 12:15:52] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:15:52] [INFO]   ?? core/
