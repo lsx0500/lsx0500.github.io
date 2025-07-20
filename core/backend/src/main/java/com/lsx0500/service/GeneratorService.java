@@ -10,9 +10,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * 生成器服务类
- * 作者: lsx0500
- * 日期: 2025-01-27
+ * Generator Service Class
+ * Author: lsx0500
+ * Date: 2025-01-27
  */
 @Service
 public class GeneratorService {
@@ -22,61 +22,61 @@ public class GeneratorService {
     private static final String GENERATED_DIR = PROJECT_ROOT + "/../../core/frontend/generated";
     
     /**
-     * 生成HTML文件
+     * Generate HTML file
      */
     public String generateHtmlFile(GenerateRequest request, String filename) {
         try {
-            System.out.println("开始生成文件: " + filename);
-            System.out.println("项目根目录: " + PROJECT_ROOT);
-            System.out.println("特效目录: " + EFFECTS_DIR);
-            System.out.println("生成目录: " + GENERATED_DIR);
+            System.out.println("Starting file generation: " + filename);
+            System.out.println("Project root: " + PROJECT_ROOT);
+            System.out.println("Effects directory: " + EFFECTS_DIR);
+            System.out.println("Generated directory: " + GENERATED_DIR);
             
-            // 确保生成目录存在
+            // Ensure generated directory exists
             Path generatedPath = Paths.get(GENERATED_DIR);
             if (!Files.exists(generatedPath)) {
                 Files.createDirectories(generatedPath);
-                System.out.println("创建生成目录: " + GENERATED_DIR);
+                System.out.println("Created generated directory: " + GENERATED_DIR);
             }
             
-            // 查找模板文件
+            // Find template file
             String templatePath = findTemplate(request.getPatternType());
             if (templatePath == null) {
-                System.err.println("未找到模板文件: " + request.getPatternType());
+                System.err.println("Template file not found: " + request.getPatternType());
                 return null;
             }
-            System.out.println("找到模板文件: " + templatePath);
+            System.out.println("Found template file: " + templatePath);
             
-            // 读取模板内容
+            // Read template content
             String templateContent = readFile(templatePath);
             if (templateContent == null) {
-                System.err.println("无法读取模板文件: " + templatePath);
+                System.err.println("Cannot read template file: " + templatePath);
                 return null;
             }
-            System.out.println("模板内容长度: " + templateContent.length());
+            System.out.println("Template content length: " + templateContent.length());
             
-            // 替换模板变量
+            // Replace template variables
             String generatedContent = replaceTemplateVariables(templateContent, request);
-            System.out.println("替换变量完成，生成内容长度: " + generatedContent.length());
+            System.out.println("Variable replacement completed, generated content length: " + generatedContent.length());
             
-            // 写入生成的文件
+            // Write generated file
             String outputPath = GENERATED_DIR + "/" + filename;
             writeFile(outputPath, generatedContent);
             
-            System.out.println("文件生成成功: " + outputPath);
+            System.out.println("File generated successfully: " + outputPath);
             return outputPath;
             
         } catch (Exception e) {
-            System.err.println("生成文件时发生异常: " + e.getMessage());
+            System.err.println("Exception during file generation: " + e.getMessage());
             e.printStackTrace();
             return null;
         }
     }
     
     /**
-     * 查找模板文件
+     * Find template file
      */
     private String findTemplate(String patternType) {
-        System.out.println("查找模板文件，类型: " + patternType);
+        System.out.println("Looking for template file, type: " + patternType);
         
         String[] possiblePaths = {
             EFFECTS_DIR + "/" + patternType + "/" + patternType + "_01.html",
@@ -85,21 +85,21 @@ public class GeneratorService {
         };
         
         for (String path : possiblePaths) {
-            System.out.println("检查路径: " + path);
+            System.out.println("Checking path: " + path);
             if (Files.exists(Paths.get(path))) {
-                System.out.println("找到模板文件: " + path);
+                System.out.println("Found template file: " + path);
                 return path;
             } else {
-                System.out.println("路径不存在: " + path);
+                System.out.println("Path does not exist: " + path);
             }
         }
         
-        System.out.println("未找到模板文件");
+        System.out.println("Template file not found");
         return null;
     }
     
     /**
-     * 读取文件内容
+     * Read file content
      */
     private String readFile(String filePath) {
         try {
@@ -111,27 +111,27 @@ public class GeneratorService {
     }
     
     /**
-     * 写入文件内容
+     * Write file content
      */
     private void writeFile(String filePath, String content) throws IOException {
         Files.write(Paths.get(filePath), content.getBytes(StandardCharsets.UTF_8));
     }
     
     /**
-     * 替换模板变量
+     * Replace template variables
      */
     private String replaceTemplateVariables(String template, GenerateRequest request) {
         String result = template;
         
-        // 替换用户文字
+        // Replace user text
         result = result.replace("{{USER_TEXT}}", request.getText());
         
-        // 替换主色调
+        // Replace primary color
         if (request.getPrimaryColor() != null) {
             result = result.replace("{{PRIMARY_COLOR}}", request.getPrimaryColor());
         }
         
-        // 替换背景色
+        // Replace background color
         if (request.getBgColor() != null) {
             result = result.replace("{{BG_COLOR}}", request.getBgColor());
         }
@@ -140,37 +140,37 @@ public class GeneratorService {
     }
     
     /**
-     * 同步到Git
+     * Sync to Git
      */
     public void syncToGit(String filename) {
         try {
-            // 构建PowerShell命令
-            String scriptPath = PROJECT_ROOT + "/scripts/sync-to-git.ps1";
+            // Build PowerShell command
+            String scriptPath = PROJECT_ROOT + "/../../scripts/sync-to-git.ps1";
             String command = String.format("powershell.exe -ExecutionPolicy Bypass -File \"%s\" \"%s\" \"%s\"",
-                    scriptPath, PROJECT_ROOT, filename);
+                    scriptPath, PROJECT_ROOT + "/../..", filename);
             
-            // 执行命令
+            // Execute command
             ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command("cmd", "/c", command);
             processBuilder.redirectErrorStream(true);
             
             Process process = processBuilder.start();
             
-            // 读取输出
+            // Read output
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    System.out.println("Git同步: " + line);
+                    System.out.println("Git sync: " + line);
                 }
             }
             
-            // 等待进程完成
+            // Wait for process completion
             int exitCode = process.waitFor();
-            System.out.println("Git同步完成，退出码: " + exitCode);
+            System.out.println("Git sync completed, exit code: " + exitCode);
             
         } catch (Exception e) {
-            System.err.println("Git同步失败: " + e.getMessage());
+            System.err.println("Git sync failed: " + e.getMessage());
             e.printStackTrace();
         }
     }
