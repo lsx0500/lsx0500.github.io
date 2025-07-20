@@ -2164,3 +2164,10 @@
 [2025-07-20 12:42:26] [INFO] Changes detected. Starting sync...
 [2025-07-20 12:42:26] [INFO] Changes found:
 [2025-07-20 12:42:26] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:42:26] [INFO] Added all changes
+[2025-07-20 12:42:26] [INFO] Committed: Auto-sync: 2025-07-20 12:42:26
+[2025-07-20 12:42:28] [INFO] Push successful to main branch
+[2025-07-20 12:42:34] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:42:34] [INFO] Changes found:
+[2025-07-20 12:42:34] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:42:34] [INFO]   ?? test-minimal.ps1
