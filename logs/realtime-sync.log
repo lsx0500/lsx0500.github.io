@@ -1,0 +1,17 @@
+[2025-07-20 11:31:22] [INFO] Starting real-time Git sync monitoring...
+[2025-07-20 11:31:22] [INFO] Project root: .
+[2025-07-20 11:31:22] [INFO] Check interval: 10 seconds
+[2025-07-20 11:31:22] [INFO] Initial state captured. Monitoring for changes...
+[2025-07-20 11:31:22] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:31:22] [INFO] Changes found:
+[2025-07-20 11:31:22] [INFO]   ?? .vscode/
+[2025-07-20 11:31:22] [INFO]   ?? PROJECT_SUMMARY.md
+[2025-07-20 11:31:22] [INFO]   ?? README.md
+[2025-07-20 11:31:22] [INFO]   ?? core/
+[2025-07-20 11:31:22] [INFO]   ?? effects/
+[2025-07-20 11:31:22] [INFO]   ?? index.html
+[2025-07-20 11:31:22] [INFO]   ?? init-env.ps1
+[2025-07-20 11:31:22] [INFO]   ?? logs/
+[2025-07-20 11:31:22] [INFO]   ?? scripts/
+[2025-07-20 11:31:22] [INFO]   ?? start.ps1
+[2025-07-20 11:31:22] [INFO]   ?? sync-realtime.ps1

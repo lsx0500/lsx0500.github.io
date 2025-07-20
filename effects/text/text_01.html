@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{USER_TEXT}} - 文字特效</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: {{BG_COLOR}};
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .text-container {
+            text-align: center;
+            animation: textAppear 2s ease-in-out;
+        }
+        
+        .main-text {
+            font-size: 4em;
+            font-weight: bold;
+            color: {{PRIMARY_COLOR}};
+            text-shadow: 0 0 20px {{PRIMARY_COLOR}};
+            margin-bottom: 20px;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 20px {{PRIMARY_COLOR}};
+                transform: scale(1);
+            }
+            100% {
+                text-shadow: 0 0 40px {{PRIMARY_COLOR}}, 0 0 60px {{PRIMARY_COLOR}};
+                transform: scale(1.05);
+            }
+        }
+        
+        .floating-letters {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .letter {
+            position: absolute;
+            color: {{PRIMARY_COLOR}};
+            font-size: 2em;
+            font-weight: bold;
+            animation: floatLetter 6s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes floatLetter {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: {{PRIMARY_COLOR}};
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="floating-letters" id="floatingLetters"></div>
+        <div class="particles" id="particles"></div>
+        
+        <div class="text-container">
+            <div class="main-text">{{USER_TEXT}}</div>
+        </div>
+    </div>
+    
+    <script>
+        // 创建浮动字母
+        function createFloatingLetters() {
+            const container = document.getElementById('floatingLetters');
+            const letters = '{{USER_TEXT}}'.split('');
+            const letterCount = letters.length * 3; // 每个字母创建3个浮动实例
+            
+            for (let i = 0; i < letterCount; i++) {
+                const letter = document.createElement('div');
+                letter.className = 'letter';
+                letter.textContent = letters[i % letters.length];
+                letter.style.left = Math.random() * 100 + '%';
+                letter.style.animationDelay = Math.random() * 6 + 's';
+                letter.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                letter.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(letter);
+            }
+        }
+        
+        // 创建粒子效果
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                container.appendChild(particle);
+            }
+        }
+        
+        // 页面加载完成后创建效果
+        window.addEventListener('load', function() {
+            createFloatingLetters();
+            createParticles();
+            
+            // 定期重新创建效果
+            setInterval(createFloatingLetters, 8000);
+            setInterval(createParticles, 10000);
+        });
+    </script>
+</body>
+</html> 

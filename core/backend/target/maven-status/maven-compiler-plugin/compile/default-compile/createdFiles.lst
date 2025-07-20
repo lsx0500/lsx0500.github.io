@@ -1,0 +1,5 @@
+com\lsx0500\model\GenerateRequest.class
+com\lsx0500\service\GeneratorService.class
+com\lsx0500\model\GenerateResponse.class
+com\lsx0500\controller\GeneratorController.class
+com\lsx0500\GeneratorApplication.class

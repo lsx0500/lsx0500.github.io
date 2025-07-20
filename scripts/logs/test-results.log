@@ -1,0 +1,25 @@
+[2025-07-20 11:09:04] [INFO] Starting automated testing...
+[2025-07-20 11:09:05] [INFO] Test case: I love you - heart
+[2025-07-20 11:09:05] [ERROR] Test exception: 远程服务器返回错误: (500) 内部服务器错误。
+[2025-07-20 11:09:07] [INFO] Test case: Happy Birthday - star
+[2025-07-20 11:09:07] [ERROR] Test exception: 远程服务器返回错误: (500) 内部服务器错误。
+[2025-07-20 11:09:09] [INFO] Test case: Happy New Year - heart
+[2025-07-20 11:09:09] [ERROR] Test exception: 远程服务器返回错误: (500) 内部服务器错误。
+[2025-07-20 11:09:11] [INFO] Test completed: Success 0/3, Success rate: 0%
+[2025-07-20 11:09:11] [INFO] Starting local file deletion sync test...
+[2025-07-20 11:09:11] [WARN] No files found for testing
+[2025-07-20 11:09:11] [INFO] Automated testing completed
+[2025-07-20 11:23:13] [INFO] Starting automated testing...
+[2025-07-20 11:23:13] [INFO] Test case: I love you - heart
+[2025-07-20 11:23:13] [SUCCESS] Test passed: heart_202507201123.html
+[2025-07-20 11:23:13] [ERROR] File generation verification failed: D:\代码\git\test-clone\lsx0500.github.io\scripts/core/frontend/generated/heart_202507201123.html
+[2025-07-20 11:23:15] [INFO] Test case: Happy Birthday - star
+[2025-07-20 11:23:15] [SUCCESS] Test passed: star_202507201123.html
+[2025-07-20 11:23:15] [ERROR] File generation verification failed: D:\代码\git\test-clone\lsx0500.github.io\scripts/core/frontend/generated/star_202507201123.html
+[2025-07-20 11:23:17] [INFO] Test case: Happy New Year - heart
+[2025-07-20 11:23:17] [SUCCESS] Test passed: heart_202507201123.html
+[2025-07-20 11:23:17] [ERROR] File generation verification failed: D:\代码\git\test-clone\lsx0500.github.io\scripts/core/frontend/generated/heart_202507201123.html
+[2025-07-20 11:23:20] [INFO] Test completed: Success 3/3, Success rate: 100%
+[2025-07-20 11:23:20] [INFO] Starting local file deletion sync test...
+[2025-07-20 11:23:20] [WARN] No files found for testing
+[2025-07-20 11:23:20] [INFO] Automated testing completed

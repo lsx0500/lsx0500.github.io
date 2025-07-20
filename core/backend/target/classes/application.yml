@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: pattern-generator
+  
+  # 静态资源配置
+  web:
+    resources:
+      static-locations: classpath:/static/,file:../frontend/
+  
+  # 日志配置
+  logging:
+    level:
+      com.lsx0500: DEBUG
+      org.springframework.web: INFO
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+      file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file:
+      name: logs/application.log
+
+# 自定义配置
+app:
+  # 项目根目录
+  project-root: ${user.dir}
+  # 特效模板目录
+  effects-dir: ${app.project-root}/effects
+  # 生成文件目录
+  generated-dir: ${app.project-root}/core/frontend/generated
+  # Git同步脚本路径
+  git-sync-script: ${app.project-root}/scripts/sync-to-git.ps1 

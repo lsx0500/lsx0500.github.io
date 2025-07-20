@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lsx0500 - 个性化图案生成系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .color-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .preview {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #dee2e6;
+        }
+
+        .preview h3 {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .generated-files {
+            margin-top: 30px;
+        }
+
+        .file-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .file-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .file-item a:hover {
+            text-decoration: underline;
+        }
+
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .color-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>lsx0500</h1>
+            <p>个性化图案生成系统</p>
+        </div>
+
+        <div class="main-content">
+            <form id="generatorForm">
+                <div class="form-group">
+                    <label for="patternType">图案类型</label>
+                    <select id="patternType" name="patternType" required>
+                        <option value="">请选择图案类型</option>
+                        <option value="heart">心形图案</option>
+                        <option value="star">星形图案</option>
+                        <option value="text">文字特效</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="userText">自定义文字</label>
+                    <input type="text" id="userText" name="userText" placeholder="输入您想要显示的文字" required>
+                </div>
+
+                <div class="form-group">
+                    <label>颜色设置</label>
+                    <div class="color-inputs">
+                        <div>
+                            <label for="primaryColor">主色调</label>
+                            <input type="color" id="primaryColor" name="primaryColor" value="#ff6b6b">
+                        </div>
+                        <div>
+                            <label for="bgColor">背景色</label>
+                            <input type="color" id="bgColor" name="bgColor" value="#4ecdc4">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" id="generateBtn">
+                    生成图案
+                </button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>正在生成图案，请稍候...</p>
+            </div>
+
+            <div id="status"></div>
+
+            <div class="preview" id="preview" style="display: none;">
+                <h3>生成预览</h3>
+                <div id="previewContent"></div>
+            </div>
+
+            <div class="generated-files" id="generatedFiles" style="display: none;">
+                <h3>已生成的文件</h3>
+                <div id="filesList"></div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>🎨 个性化定制</h3>
+                <p>支持自定义文字、颜色和图案类型，打造专属的视觉效果</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ 实时生成</h3>
+                <p>基于Spring Boot后端，提供快速响应的图案生成服务</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 响应式设计</h3>
+                <p>完美适配各种设备，提供优秀的用户体验</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 自动同步</h3>
+                <p>自动同步到Git仓库，确保数据安全和版本控制</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generatorForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                patternType: formData.get('patternType'),
+                userText: formData.get('userText'),
+                primaryColor: formData.get('primaryColor'),
+                bgColor: formData.get('bgColor')
+            };
+
+            // 显示加载状态
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('generateBtn').disabled = true;
+            document.getElementById('status').innerHTML = '';
+
+            try {
+                // 模拟API调用（实际项目中会调用真实的后端API）
+                await simulateGeneration(data);
+                
+                showStatus('图案生成成功！', 'success');
+                showPreview(data);
+                showGeneratedFiles();
+                
+            } catch (error) {
+                showStatus('生成失败: ' + error.message, 'error');
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('generateBtn').disabled = false;
+            }
+        });
+
+        function simulateGeneration(data) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // 模拟生成过程
+                    const timestamp = new Date().toISOString().replace(/[:.]/g, '').slice(0, -5);
+                    const filename = `${data.patternType}_${timestamp}.html`;
+                    
+                    // 存储生成的文件信息
+                    localStorage.setItem('lastGeneratedFile', JSON.stringify({
+                        filename: filename,
+                        data: data,
+                        timestamp: new Date().toISOString()
+                    }));
+                    
+                    resolve(filename);
+                }, 2000);
+            });
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        function showPreview(data) {
+            const preview = document.getElementById('preview');
+            const content = document.getElementById('previewContent');
+            
+            content.innerHTML = `
+                <p><strong>图案类型:</strong> ${data.patternType}</p>
+                <p><strong>文字内容:</strong> ${data.userText}</p>
+                <p><strong>主色调:</strong> <span style="color: ${data.primaryColor}">${data.primaryColor}</span></p>
+                <p><strong>背景色:</strong> <span style="color: ${data.bgColor}">${data.bgColor}</span></p>
+            `;
+            
+            preview.style.display = 'block';
+        }
+
+        function showGeneratedFiles() {
+            const filesDiv = document.getElementById('generatedFiles');
+            const filesList = document.getElementById('filesList');
+            
+            const lastFile = localStorage.getItem('lastGeneratedFile');
+            if (lastFile) {
+                const fileInfo = JSON.parse(lastFile);
+                filesList.innerHTML = `
+                    <div class="file-item">
+                        <a href="#" onclick="downloadFile('${fileInfo.filename}')">${fileInfo.filename}</a>
+                        <br><small>生成时间: ${new Date(fileInfo.timestamp).toLocaleString()}</small>
+                    </div>
+                `;
+                filesDiv.style.display = 'block';
+            }
+        }
+
+        function downloadFile(filename) {
+            // 模拟文件下载
+            const link = document.createElement('a');
+            link.href = `data:text/html;charset=utf-8,${encodeURIComponent(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Generated Pattern</title>
+                    <style>
+                        body { 
+                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                            font-family: Arial, sans-serif;
+                        }
+                        .pattern {
+                            text-align: center;
+                            color: white;
+                            font-size: 2rem;
+                            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="pattern">
+                        <h1>${filename}</h1>
+                        <p>这是一个生成的图案文件</p>
+                    </div>
+                </body>
+                </html>
+            `)}`;
+            link.download = filename;
+            link.click();
+        }
+
+        // 页面加载时检查是否有已生成的文件
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('lastGeneratedFile')) {
+                showGeneratedFiles();
+            }
+        });
+    </script>
+</body>
+</html> 

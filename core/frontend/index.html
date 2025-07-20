@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个性化特效生成器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>个性化特效生成器</h1>
+            <p>输入您的文字，选择图案类型，生成专属特效</p>
+        </header>
+        
+        <main class="main">
+            <form id="generatorForm" class="form">
+                <div class="form-group">
+                    <label for="userText">请输入文字</label>
+                    <input type="text" id="userText" name="userText" placeholder="例如：我爱你" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="patternType">选择图案类型</label>
+                    <select id="patternType" name="patternType" required>
+                        <option value="">请选择图案类型</option>
+                        <option value="heart">爱心特效</option>
+                        <option value="star">星星特效</option>
+                        <option value="text">文字特效</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="primaryColor">主色调</label>
+                    <input type="color" id="primaryColor" name="primaryColor" value="#ff69b4">
+                </div>
+                
+                <div class="form-group">
+                    <label for="bgColor">背景色</label>
+                    <input type="color" id="bgColor" name="bgColor" value="#000000">
+                </div>
+                
+                <button type="submit" class="submit-btn">生成特效</button>
+            </form>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2025 个性化特效生成器 - 由 lsx0500 开发</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 

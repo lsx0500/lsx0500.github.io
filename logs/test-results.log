@@ -1,0 +1,32 @@
+[2025-07-20 11:23:36] [INFO] Starting automated testing...
+[2025-07-20 11:23:36] [INFO] Test case: I love you - heart
+[2025-07-20 11:23:37] [SUCCESS] Test passed: heart_202507201123.html
+[2025-07-20 11:23:37] [SUCCESS] File generation verification passed: D:\代码\git\test-clone\lsx0500.github.io/core/frontend/generated/heart_202507201123.html
+[2025-07-20 11:23:39] [INFO] Test case: Happy Birthday - star
+[2025-07-20 11:23:39] [SUCCESS] Test passed: star_202507201123.html
+[2025-07-20 11:23:39] [SUCCESS] File generation verification passed: D:\代码\git\test-clone\lsx0500.github.io/core/frontend/generated/star_202507201123.html
+[2025-07-20 11:23:41] [INFO] Test case: Happy New Year - heart
+[2025-07-20 11:23:41] [SUCCESS] Test passed: heart_202507201123.html
+[2025-07-20 11:23:41] [SUCCESS] File generation verification passed: D:\代码\git\test-clone\lsx0500.github.io/core/frontend/generated/heart_202507201123.html
+[2025-07-20 11:23:43] [INFO] Test completed: Success 3/3, Success rate: 100%
+[2025-07-20 11:23:43] [INFO] Starting local file deletion sync test...
+[2025-07-20 11:23:43] [ERROR] Local file deletion sync test failed: 所在位置 D:\代码\git\test-clone\lsx0500.github.io\scripts\sync-to-git.ps1:72 字符: 1
++ } catch {
++ ~
+表达式或语句中包含意外的标记“}”。
+
+所在位置 D:\代码\git\test-clone\lsx0500.github.io\scripts\sync-to-git.ps1:87 字符: 24
++ Write-Log "Git鍚屾鎿嶄綔瀹屾垚"
++                        ~~
+字符串缺少终止符: "。
+
+所在位置 D:\代码\git\test-clone\lsx0500.github.io\scripts\sync-to-git.ps1:79 字符: 30
++     if ($LASTEXITCODE -eq 0) {
++                              ~
+语句块或类型定义中缺少右“}”。
+
+所在位置 D:\代码\git\test-clone\lsx0500.github.io\scripts\sync-to-git.ps1:72 字符: 9
++ } catch {
++         ~
+语句块或类型定义中缺少右“}”。
+[2025-07-20 11:23:43] [INFO] Automated testing completed
