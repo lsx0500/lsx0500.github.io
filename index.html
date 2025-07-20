@@ -337,18 +337,50 @@
                 statusText.textContent = steps[i].status;
             }
 
-            // 显示结果
-            setTimeout(() => {
-                progressSection.style.display = 'none';
-                resultSection.style.display = 'block';
-                generateBtn.disabled = false;
+            // 调用真实API
+            try {
+                const response = await fetch('http://localhost:8080/api/generate/pattern', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
                 
-                // 设置下载链接
-                const timestamp = new Date().getTime();
-                const filename = `${data.patternType}_${timestamp}.html`;
-                downloadBtn.href = `core/frontend/generated/${filename}`;
-                downloadBtn.download = filename;
-            }, 500);
+                if (result.success) {
+                    // 显示结果
+                    setTimeout(() => {
+                        progressSection.style.display = 'none';
+                        resultSection.style.display = 'block';
+                        generateBtn.disabled = false;
+                        
+                        // 设置预览链接
+                        downloadBtn.href = result.previewUrl;
+                        downloadBtn.textContent = '查看生成的图案';
+                        downloadBtn.target = '_blank';
+                        
+                        // 添加GitHub链接
+                        const gitLink = document.createElement('a');
+                        gitLink.href = result.gitUrl;
+                        gitLink.textContent = '在GitHub查看';
+                        gitLink.className = 'download-btn';
+                        gitLink.style.marginLeft = '10px';
+                        gitLink.target = '_blank';
+                        resultSection.appendChild(gitLink);
+                    }, 500);
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('生成失败:', error);
+                statusText.textContent = '生成失败: ' + error.message;
+                setTimeout(() => {
+                    progressSection.style.display = 'none';
+                    generateBtn.disabled = false;
+                }, 2000);
+            }
         }
 
         // 页面加载完成

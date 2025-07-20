@@ -988,3 +988,12 @@
 [2025-07-20 12:16:25] [INFO] Changes found:
 [2025-07-20 12:16:25] [INFO]    M core/backend/src/main/resources/application.yml
 [2025-07-20 12:16:25] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:16:25] [INFO] Added all changes
+[2025-07-20 12:16:25] [INFO] Committed: Auto-sync: 2025-07-20 12:16:25
+[2025-07-20 12:16:27] [INFO] Push successful to branch: newBranch
+[2025-07-20 12:16:27] [INFO] Push successful to main branch
+[2025-07-20 12:16:57] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:16:57] [INFO] Changes found:
+[2025-07-20 12:16:57] [INFO]    M index.html
+[2025-07-20 12:16:57] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:16:57] [INFO]   ?? scripts/start-backend.ps1
