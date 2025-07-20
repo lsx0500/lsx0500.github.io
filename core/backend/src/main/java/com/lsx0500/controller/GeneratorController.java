@@ -52,4 +52,29 @@ public class GeneratorController {
     public ResponseEntity<String> health() {
         return ResponseEntity.ok("Pattern Generator API is running!");
     }
+
+    @GetMapping("/preview/{filename}")
+    public ResponseEntity<String> previewFile(@PathVariable String filename) {
+        try {
+            String projectRoot = System.getProperty("user.dir") + "/../..";
+            Path filePath = Paths.get(projectRoot, "core/frontend/generated", filename);
+            
+            if (!Files.exists(filePath)) {
+                return ResponseEntity.notFound().build();
+            }
+            
+            String content = new String(Files.readAllBytes(filePath), "UTF-8");
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.TEXT_HTML);
+            
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(content);
+                    
+        } catch (IOException e) {
+            System.err.println("预览文件失败: " + e.getMessage());
+            return ResponseEntity.internalServerError().body("文件读取失败: " + e.getMessage());
+        }
+    }
 } 
