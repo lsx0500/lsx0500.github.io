@@ -405,3 +405,11 @@
 [2025-07-20 11:44:13] [INFO] Added all changes
 [2025-07-20 11:44:13] [INFO] Committed: Auto-sync: 2025-07-20 11:44:13
 [2025-07-20 11:44:15] [INFO] Push successful
+[2025-07-20 11:47:34] [INFO] Starting real-time Git sync monitoring...
+[2025-07-20 11:47:34] [INFO] Project root: D:\ДњТы\git\test-clone\lsx0500.github.io
+[2025-07-20 11:47:34] [INFO] Check interval: 30 seconds
+[2025-07-20 11:47:34] [INFO] Current branch: newBranch
+[2025-07-20 11:47:34] [INFO] Initial state captured. Monitoring for changes...
+[2025-07-20 11:47:34] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:47:34] [INFO] Changes found:
+[2025-07-20 11:47:34] [INFO]    M logs/realtime-sync.log
