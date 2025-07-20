@@ -1,0 +1,670 @@
+[2025-07-20 11:31:22] [INFO] Starting real-time Git sync monitoring...
+[2025-07-20 11:31:22] [INFO] Project root: .
+[2025-07-20 11:31:22] [INFO] Check interval: 10 seconds
+[2025-07-20 11:31:22] [INFO] Initial state captured. Monitoring for changes...
+[2025-07-20 11:31:22] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:31:22] [INFO] Changes found:
+[2025-07-20 11:31:22] [INFO]   ?? .vscode/
+[2025-07-20 11:31:22] [INFO]   ?? PROJECT_SUMMARY.md
+[2025-07-20 11:31:22] [INFO]   ?? README.md
+[2025-07-20 11:31:22] [INFO]   ?? core/
+[2025-07-20 11:31:22] [INFO]   ?? effects/
+[2025-07-20 11:31:22] [INFO]   ?? index.html
+[2025-07-20 11:31:22] [INFO]   ?? init-env.ps1
+[2025-07-20 11:31:22] [INFO]   ?? logs/
+[2025-07-20 11:31:22] [INFO]   ?? scripts/
+[2025-07-20 11:31:22] [INFO]   ?? start.ps1
+[2025-07-20 11:31:22] [INFO]   ?? sync-realtime.ps1
+[2025-07-20 11:31:22] [INFO] Added all changes
+[2025-07-20 11:31:22] [INFO] Committed: Auto-sync: 2025-07-20 11:31:22
+[2025-07-20 11:31:34] [INFO] Push successful
+[2025-07-20 11:31:44] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:31:44] [INFO] Changes found:
+[2025-07-20 11:31:44] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:31:44] [INFO]   ?? PROJECT_ANALYSIS.md
+[2025-07-20 11:31:44] [INFO] Added all changes
+[2025-07-20 11:31:44] [INFO] Committed: Auto-sync: 2025-07-20 11:31:44
+[2025-07-20 11:31:46] [INFO] Push successful
+[2025-07-20 11:31:56] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:31:56] [INFO] Changes found:
+[2025-07-20 11:31:56] [INFO]   MM logs/realtime-sync.log
+[2025-07-20 11:31:56] [INFO] Added all changes
+[2025-07-20 11:31:56] [INFO] Committed: Auto-sync: 2025-07-20 11:31:56
+[2025-07-20 11:31:57] [INFO] Push successful
+[2025-07-20 11:32:07] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:32:07] [INFO] Changes found:
+[2025-07-20 11:32:07] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:32:07] [INFO] Added all changes
+[2025-07-20 11:32:07] [INFO] Committed: Auto-sync: 2025-07-20 11:32:07
+[2025-07-20 11:32:08] [INFO] Push successful
+[2025-07-20 11:32:19] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:32:19] [INFO] Changes found:
+[2025-07-20 11:32:19] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:32:19] [INFO] Added all changes
+[2025-07-20 11:32:19] [INFO] Committed: Auto-sync: 2025-07-20 11:32:19
+[2025-07-20 11:32:31] [INFO] Push successful
+[2025-07-20 11:32:41] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:32:41] [INFO] Changes found:
+[2025-07-20 11:32:41] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:32:41] [INFO] Added all changes
+[2025-07-20 11:32:41] [INFO] Committed: Auto-sync: 2025-07-20 11:32:41
+[2025-07-20 11:32:42] [INFO] Push successful
+[2025-07-20 11:32:52] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:32:52] [INFO] Changes found:
+[2025-07-20 11:32:52] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:32:52] [INFO] Added all changes
+[2025-07-20 11:32:53] [INFO] Committed: Auto-sync: 2025-07-20 11:32:52
+[2025-07-20 11:32:54] [INFO] Push successful
+[2025-07-20 11:33:04] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:33:04] [INFO] Changes found:
+[2025-07-20 11:33:04] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:33:04] [INFO] Added all changes
+[2025-07-20 11:33:04] [INFO] Committed: Auto-sync: 2025-07-20 11:33:04
+[2025-07-20 11:33:05] [INFO] Push successful
+[2025-07-20 11:33:15] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:33:16] [INFO] Changes found:
+[2025-07-20 11:33:16] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:33:16] [INFO] Added all changes
+[2025-07-20 11:33:16] [INFO] Committed: Auto-sync: 2025-07-20 11:33:16
+[2025-07-20 11:33:17] [INFO] Push successful
+[2025-07-20 11:33:27] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:33:27] [INFO] Changes found:
+[2025-07-20 11:33:27] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:33:27] [INFO] Added all changes
+[2025-07-20 11:33:27] [INFO] Committed: Auto-sync: 2025-07-20 11:33:27
+[2025-07-20 11:33:29] [INFO] Push successful
+[2025-07-20 11:33:39] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:33:39] [INFO] Changes found:
+[2025-07-20 11:33:39] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:33:39] [INFO] Added all changes
+[2025-07-20 11:33:39] [INFO] Committed: Auto-sync: 2025-07-20 11:33:39
+[2025-07-20 11:33:40] [INFO] Push successful
+[2025-07-20 11:33:50] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:33:50] [INFO] Changes found:
+[2025-07-20 11:33:50] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:33:50] [INFO] Added all changes
+[2025-07-20 11:33:50] [INFO] Committed: Auto-sync: 2025-07-20 11:33:50
+[2025-07-20 11:33:52] [INFO] Push successful
+[2025-07-20 11:34:02] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:34:02] [INFO] Changes found:
+[2025-07-20 11:34:02] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:34:02] [INFO] Added all changes
+[2025-07-20 11:34:02] [INFO] Committed: Auto-sync: 2025-07-20 11:34:02
+[2025-07-20 11:34:14] [INFO] Push successful
+[2025-07-20 11:34:24] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:34:24] [INFO] Changes found:
+[2025-07-20 11:34:24] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:34:24] [INFO] Added all changes
+[2025-07-20 11:34:24] [INFO] Committed: Auto-sync: 2025-07-20 11:34:24
+[2025-07-20 11:34:25] [INFO] Push successful
+[2025-07-20 11:34:35] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:34:35] [INFO] Changes found:
+[2025-07-20 11:34:35] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:34:35] [INFO] Added all changes
+[2025-07-20 11:34:36] [INFO] Committed: Auto-sync: 2025-07-20 11:34:35
+[2025-07-20 11:34:37] [INFO] Push successful
+[2025-07-20 11:34:47] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:34:47] [INFO] Changes found:
+[2025-07-20 11:34:47] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:34:47] [INFO] Added all changes
+[2025-07-20 11:34:47] [INFO] Committed: Auto-sync: 2025-07-20 11:34:47
+[2025-07-20 11:34:48] [INFO] Push successful
+[2025-07-20 11:34:58] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:34:58] [INFO] Changes found:
+[2025-07-20 11:34:58] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:34:58] [INFO] Added all changes
+[2025-07-20 11:34:58] [INFO] Committed: Auto-sync: 2025-07-20 11:34:58
+[2025-07-20 11:35:00] [INFO] Push successful
+[2025-07-20 11:35:10] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:35:10] [INFO] Changes found:
+[2025-07-20 11:35:10] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:35:10] [INFO] Added all changes
+[2025-07-20 11:35:10] [INFO] Committed: Auto-sync: 2025-07-20 11:35:10
+[2025-07-20 11:35:11] [INFO] Push successful
+[2025-07-20 11:35:21] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:35:21] [INFO] Changes found:
+[2025-07-20 11:35:21] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:35:21] [INFO] Added all changes
+[2025-07-20 11:35:21] [INFO] Committed: Auto-sync: 2025-07-20 11:35:21
+[2025-07-20 11:35:23] [INFO] Push successful
+[2025-07-20 11:35:33] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:35:33] [INFO] Changes found:
+[2025-07-20 11:35:33] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:35:33] [INFO] Added all changes
+[2025-07-20 11:35:33] [INFO] Committed: Auto-sync: 2025-07-20 11:35:33
+[2025-07-20 11:35:34] [INFO] Push successful
+[2025-07-20 11:35:44] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:35:44] [INFO] Changes found:
+[2025-07-20 11:35:44] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:35:44] [INFO] Added all changes
+[2025-07-20 11:35:44] [INFO] Committed: Auto-sync: 2025-07-20 11:35:44
+[2025-07-20 11:35:56] [INFO] Push successful
+[2025-07-20 11:36:06] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:36:06] [INFO] Changes found:
+[2025-07-20 11:36:06] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:36:06] [INFO] Added all changes
+[2025-07-20 11:36:07] [INFO] Committed: Auto-sync: 2025-07-20 11:36:06
+[2025-07-20 11:36:08] [INFO] Push successful
+[2025-07-20 11:36:18] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:36:18] [INFO] Changes found:
+[2025-07-20 11:36:18] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:36:18] [INFO] Added all changes
+[2025-07-20 11:36:18] [INFO] Committed: Auto-sync: 2025-07-20 11:36:18
+[2025-07-20 11:36:21] [INFO] Push successful
+[2025-07-20 11:36:31] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:36:31] [INFO] Changes found:
+[2025-07-20 11:36:31] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:36:31] [INFO] Added all changes
+[2025-07-20 11:36:31] [INFO] Committed: Auto-sync: 2025-07-20 11:36:31
+[2025-07-20 11:36:32] [INFO] Push successful
+[2025-07-20 11:36:42] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:36:42] [INFO] Changes found:
+[2025-07-20 11:36:42] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:36:42] [INFO] Added all changes
+[2025-07-20 11:36:42] [INFO] Committed: Auto-sync: 2025-07-20 11:36:42
+[2025-07-20 11:36:44] [INFO] Push successful
+[2025-07-20 11:36:54] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:36:54] [INFO] Changes found:
+[2025-07-20 11:36:54] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:36:54] [INFO] Added all changes
+[2025-07-20 11:36:54] [INFO] Committed: Auto-sync: 2025-07-20 11:36:54
+[2025-07-20 11:36:55] [INFO] Push successful
+[2025-07-20 11:37:05] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:37:05] [INFO] Changes found:
+[2025-07-20 11:37:05] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:37:05] [INFO] Added all changes
+[2025-07-20 11:37:05] [INFO] Committed: Auto-sync: 2025-07-20 11:37:05
+[2025-07-20 11:37:06] [INFO] Push successful
+[2025-07-20 11:37:16] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:37:16] [INFO] Changes found:
+[2025-07-20 11:37:16] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:37:16] [INFO] Added all changes
+[2025-07-20 11:37:17] [INFO] Committed: Auto-sync: 2025-07-20 11:37:16
+[2025-07-20 11:37:18] [INFO] Push successful
+[2025-07-20 11:37:28] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:37:28] [INFO] Changes found:
+[2025-07-20 11:37:28] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:37:28] [INFO] Added all changes
+[2025-07-20 11:37:28] [INFO] Committed: Auto-sync: 2025-07-20 11:37:28
+[2025-07-20 11:37:30] [INFO] Push successful
+[2025-07-20 11:37:40] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:37:40] [INFO] Changes found:
+[2025-07-20 11:37:40] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:37:40] [INFO] Added all changes
+[2025-07-20 11:37:40] [INFO] Committed: Auto-sync: 2025-07-20 11:37:40
+[2025-07-20 11:37:41] [INFO] Push successful
+[2025-07-20 11:37:51] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:37:51] [INFO] Changes found:
+[2025-07-20 11:37:51] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:37:51] [INFO] Added all changes
+[2025-07-20 11:37:52] [INFO] Committed: Auto-sync: 2025-07-20 11:37:51
+[2025-07-20 11:37:53] [INFO] Push successful
+[2025-07-20 11:38:03] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:38:03] [INFO] Changes found:
+[2025-07-20 11:38:03] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:38:03] [INFO] Added all changes
+[2025-07-20 11:38:03] [INFO] Committed: Auto-sync: 2025-07-20 11:38:03
+[2025-07-20 11:38:04] [INFO] Push successful
+[2025-07-20 11:38:14] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:38:14] [INFO] Changes found:
+[2025-07-20 11:38:14] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:38:14] [INFO] Added all changes
+[2025-07-20 11:38:15] [INFO] Committed: Auto-sync: 2025-07-20 11:38:14
+[2025-07-20 11:38:16] [INFO] Push successful
+[2025-07-20 11:38:26] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:38:26] [INFO] Changes found:
+[2025-07-20 11:38:26] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:38:26] [INFO] Added all changes
+[2025-07-20 11:38:26] [INFO] Committed: Auto-sync: 2025-07-20 11:38:26
+[2025-07-20 11:38:27] [INFO] Push successful
+[2025-07-20 11:38:37] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:38:37] [INFO] Changes found:
+[2025-07-20 11:38:37] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:38:37] [INFO] Added all changes
+[2025-07-20 11:38:38] [INFO] Committed: Auto-sync: 2025-07-20 11:38:37
+[2025-07-20 11:38:39] [INFO] Push successful
+[2025-07-20 11:38:49] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:38:49] [INFO] Changes found:
+[2025-07-20 11:38:49] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:38:49] [INFO]    M scripts/sync-to-git.ps1
+[2025-07-20 11:38:49] [INFO] Added all changes
+[2025-07-20 11:38:49] [INFO] Committed: Auto-sync: 2025-07-20 11:38:49
+[2025-07-20 11:38:50] [INFO] Push successful
+[2025-07-20 11:39:00] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:39:00] [INFO] Changes found:
+[2025-07-20 11:39:00] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:39:01] [INFO] Added all changes
+[2025-07-20 11:39:01] [INFO] Committed: Auto-sync: 2025-07-20 11:39:01
+[2025-07-20 11:39:02] [INFO] Push successful
+[2025-07-20 11:39:12] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:39:12] [INFO] Changes found:
+[2025-07-20 11:39:12] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:39:12] [INFO]    M sync-realtime.ps1
+[2025-07-20 11:39:12] [INFO] Added all changes
+[2025-07-20 11:39:12] [INFO] Committed: Auto-sync: 2025-07-20 11:39:12
+[2025-07-20 11:39:14] [INFO] Push successful
+[2025-07-20 11:39:24] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:39:24] [INFO] Changes found:
+[2025-07-20 11:39:24] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:39:24] [INFO] Added all changes
+[2025-07-20 11:39:24] [INFO] Committed: Auto-sync: 2025-07-20 11:39:24
+[2025-07-20 11:39:25] [INFO] Push successful
+[2025-07-20 11:39:35] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:39:35] [INFO] Changes found:
+[2025-07-20 11:39:35] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:39:36] [INFO] Added all changes
+[2025-07-20 11:39:36] [INFO] Committed: Auto-sync: 2025-07-20 11:39:36
+[2025-07-20 11:39:37] [INFO] Push successful
+[2025-07-20 11:39:47] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:39:47] [INFO] Changes found:
+[2025-07-20 11:39:47] [INFO]    M core/backend/src/main/java/com/lsx0500/service/GeneratorService.java
+[2025-07-20 11:39:47] [INFO]    M core/backend/target/classes/com/lsx0500/service/GeneratorService.class
+[2025-07-20 11:39:47] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:39:47] [INFO] Added all changes
+[2025-07-20 11:39:47] [INFO] Committed: Auto-sync: 2025-07-20 11:39:47
+[2025-07-20 11:39:49] [INFO] Push successful
+[2025-07-20 11:39:59] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:39:59] [INFO] Changes found:
+[2025-07-20 11:39:59] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:39:59] [INFO] Added all changes
+[2025-07-20 11:39:59] [INFO] Committed: Auto-sync: 2025-07-20 11:39:59
+[2025-07-20 11:40:00] [INFO] Push successful
+[2025-07-20 11:40:10] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:40:10] [INFO] Changes found:
+[2025-07-20 11:40:10] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:40:10] [INFO] Added all changes
+[2025-07-20 11:40:10] [INFO] Committed: Auto-sync: 2025-07-20 11:40:10
+[2025-07-20 11:40:12] [INFO] Push successful
+[2025-07-20 11:40:22] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:40:22] [INFO] Changes found:
+[2025-07-20 11:40:22] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:40:22] [INFO]   ?? check-errors.ps1
+[2025-07-20 11:40:22] [INFO] Added all changes
+[2025-07-20 11:40:22] [INFO] Committed: Auto-sync: 2025-07-20 11:40:22
+[2025-07-20 11:40:23] [INFO] Push successful
+[2025-07-20 11:40:33] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:40:33] [INFO] Changes found:
+[2025-07-20 11:40:33] [INFO]    M check-errors.ps1
+[2025-07-20 11:40:33] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:40:33] [INFO] Added all changes
+[2025-07-20 11:40:33] [INFO] Committed: Auto-sync: 2025-07-20 11:40:33
+[2025-07-20 11:40:35] [INFO] Push successful
+[2025-07-20 11:40:45] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:40:45] [INFO] Changes found:
+[2025-07-20 11:40:45] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:40:45] [INFO] Added all changes
+[2025-07-20 11:40:45] [INFO] Committed: Auto-sync: 2025-07-20 11:40:45
+[2025-07-20 11:40:46] [INFO] Push successful
+[2025-07-20 11:40:56] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:40:56] [INFO] Changes found:
+[2025-07-20 11:40:56] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:40:57] [INFO] Added all changes
+[2025-07-20 11:40:57] [INFO] Committed: Auto-sync: 2025-07-20 11:40:57
+[2025-07-20 11:40:58] [INFO] Push successful
+[2025-07-20 11:41:08] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:41:08] [INFO] Changes found:
+[2025-07-20 11:41:08] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:41:08] [INFO] Added all changes
+[2025-07-20 11:41:09] [INFO] Committed: Auto-sync: 2025-07-20 11:41:08
+[2025-07-20 11:41:10] [INFO] Push successful
+[2025-07-20 11:41:20] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:41:20] [INFO] Changes found:
+[2025-07-20 11:41:20] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:41:20] [INFO] Added all changes
+[2025-07-20 11:41:20] [INFO] Committed: Auto-sync: 2025-07-20 11:41:20
+[2025-07-20 11:41:21] [INFO] Push successful
+[2025-07-20 11:41:32] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:41:32] [INFO] Changes found:
+[2025-07-20 11:41:32] [INFO]    M check-errors.ps1
+[2025-07-20 11:41:32] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:41:32] [INFO] Added all changes
+[2025-07-20 11:41:32] [INFO] Committed: Auto-sync: 2025-07-20 11:41:32
+[2025-07-20 11:41:33] [INFO] Push successful
+[2025-07-20 11:41:43] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:41:43] [INFO] Changes found:
+[2025-07-20 11:41:43] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:41:43] [INFO] Added all changes
+[2025-07-20 11:41:43] [INFO] Committed: Auto-sync: 2025-07-20 11:41:43
+[2025-07-20 11:41:45] [INFO] Push successful
+[2025-07-20 11:41:55] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:41:55] [INFO] Changes found:
+[2025-07-20 11:41:55] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:41:55] [INFO]   ?? ERROR_REPORT.md
+[2025-07-20 11:41:55] [INFO] Added all changes
+[2025-07-20 11:41:55] [INFO] Committed: Auto-sync: 2025-07-20 11:41:55
+[2025-07-20 11:41:56] [INFO] Push successful
+[2025-07-20 11:42:06] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:42:06] [INFO] Changes found:
+[2025-07-20 11:42:06] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:42:06] [INFO] Added all changes
+[2025-07-20 11:42:07] [INFO] Committed: Auto-sync: 2025-07-20 11:42:06
+[2025-07-20 11:42:08] [INFO] Push successful
+[2025-07-20 11:42:18] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:42:18] [INFO] Changes found:
+[2025-07-20 11:42:18] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:42:18] [INFO] Added all changes
+[2025-07-20 11:42:18] [INFO] Committed: Auto-sync: 2025-07-20 11:42:18
+[2025-07-20 11:42:19] [INFO] Push successful
+[2025-07-20 11:42:29] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:42:29] [INFO] Changes found:
+[2025-07-20 11:42:29] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:42:29] [INFO] Added all changes
+[2025-07-20 11:42:29] [INFO] Committed: Auto-sync: 2025-07-20 11:42:29
+[2025-07-20 11:42:31] [INFO] Push successful
+[2025-07-20 11:42:41] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:42:41] [INFO] Changes found:
+[2025-07-20 11:42:41] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:42:41] [INFO] Added all changes
+[2025-07-20 11:42:41] [INFO] Committed: Auto-sync: 2025-07-20 11:42:41
+[2025-07-20 11:42:43] [INFO] Push successful
+[2025-07-20 11:42:53] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:42:53] [INFO] Changes found:
+[2025-07-20 11:42:53] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:42:53] [INFO] Added all changes
+[2025-07-20 11:42:53] [INFO] Committed: Auto-sync: 2025-07-20 11:42:53
+[2025-07-20 11:42:54] [INFO] Push successful
+[2025-07-20 11:43:04] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:43:04] [INFO] Changes found:
+[2025-07-20 11:43:04] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:43:04] [INFO] Added all changes
+[2025-07-20 11:43:04] [INFO] Committed: Auto-sync: 2025-07-20 11:43:04
+[2025-07-20 11:43:06] [INFO] Push successful
+[2025-07-20 11:43:16] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:43:16] [INFO] Changes found:
+[2025-07-20 11:43:16] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:43:16] [INFO] Added all changes
+[2025-07-20 11:43:16] [INFO] Committed: Auto-sync: 2025-07-20 11:43:16
+[2025-07-20 11:43:17] [INFO] Push successful
+[2025-07-20 11:43:27] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:43:27] [INFO] Changes found:
+[2025-07-20 11:43:27] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:43:27] [INFO] Added all changes
+[2025-07-20 11:43:27] [INFO] Committed: Auto-sync: 2025-07-20 11:43:27
+[2025-07-20 11:43:29] [INFO] Push successful
+[2025-07-20 11:43:39] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:43:39] [INFO] Changes found:
+[2025-07-20 11:43:39] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:43:39] [INFO] Added all changes
+[2025-07-20 11:43:39] [INFO] Committed: Auto-sync: 2025-07-20 11:43:39
+[2025-07-20 11:43:40] [INFO] Push successful
+[2025-07-20 11:43:50] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:43:50] [INFO] Changes found:
+[2025-07-20 11:43:50] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:43:50] [INFO] Added all changes
+[2025-07-20 11:43:50] [INFO] Committed: Auto-sync: 2025-07-20 11:43:50
+[2025-07-20 11:43:52] [INFO] Push successful
+[2025-07-20 11:44:02] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:44:02] [INFO] Changes found:
+[2025-07-20 11:44:02] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:44:02] [INFO] Added all changes
+[2025-07-20 11:44:02] [INFO] Committed: Auto-sync: 2025-07-20 11:44:02
+[2025-07-20 11:44:03] [INFO] Push successful
+[2025-07-20 11:44:13] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:44:13] [INFO] Changes found:
+[2025-07-20 11:44:13] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:44:13] [INFO] Added all changes
+[2025-07-20 11:44:13] [INFO] Committed: Auto-sync: 2025-07-20 11:44:13
+[2025-07-20 11:44:15] [INFO] Push successful
+[2025-07-20 11:47:34] [INFO] Starting real-time Git sync monitoring...
+[2025-07-20 11:47:34] [INFO] Project root: D:\ДњТы\git\test-clone\lsx0500.github.io
+[2025-07-20 11:47:34] [INFO] Check interval: 30 seconds
+[2025-07-20 11:47:34] [INFO] Current branch: newBranch
+[2025-07-20 11:47:34] [INFO] Initial state captured. Monitoring for changes...
+[2025-07-20 11:47:34] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:47:34] [INFO] Changes found:
+[2025-07-20 11:47:34] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:47:34] [INFO] Added all changes
+[2025-07-20 11:47:34] [INFO] Committed: Auto-sync: 2025-07-20 11:47:34
+[2025-07-20 11:47:36] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:48:06] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:48:06] [INFO] Changes found:
+[2025-07-20 11:48:06] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:48:06] [INFO] Added all changes
+[2025-07-20 11:48:06] [INFO] Committed: Auto-sync: 2025-07-20 11:48:06
+[2025-07-20 11:48:08] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:48:39] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:48:39] [INFO] Changes found:
+[2025-07-20 11:48:39] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:48:39] [INFO] Added all changes
+[2025-07-20 11:48:39] [INFO] Committed: Auto-sync: 2025-07-20 11:48:39
+[2025-07-20 11:48:41] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:49:11] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:49:11] [INFO] Changes found:
+[2025-07-20 11:49:11] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:49:11] [INFO] Added all changes
+[2025-07-20 11:49:11] [INFO] Committed: Auto-sync: 2025-07-20 11:49:11
+[2025-07-20 11:49:14] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:49:44] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:49:44] [INFO] Changes found:
+[2025-07-20 11:49:44] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:49:44] [INFO] Added all changes
+[2025-07-20 11:49:44] [INFO] Committed: Auto-sync: 2025-07-20 11:49:44
+[2025-07-20 11:49:46] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:50:16] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:50:16] [INFO] Changes found:
+[2025-07-20 11:50:16] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:50:17] [INFO] Added all changes
+[2025-07-20 11:50:17] [INFO] Committed: Auto-sync: 2025-07-20 11:50:17
+[2025-07-20 11:50:19] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:50:33] [INFO] Starting real-time Git sync monitoring...
+[2025-07-20 11:50:33] [INFO] Project root: D:\ДњТы\git\test-clone\lsx0500.github.io
+[2025-07-20 11:50:33] [INFO] Check interval: 30 seconds
+[2025-07-20 11:50:33] [INFO] Current branch: newBranch
+[2025-07-20 11:50:33] [INFO] Initial state captured. Monitoring for changes...
+[2025-07-20 11:50:33] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:50:33] [INFO] Changes found:
+[2025-07-20 11:50:33] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:50:33] [INFO] Added all changes
+[2025-07-20 11:50:34] [INFO] Committed: Auto-sync: 2025-07-20 11:50:33
+[2025-07-20 11:50:36] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:50:49] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:50:49] [INFO] Changes found:
+[2025-07-20 11:50:49] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:50:49] [INFO]   ?? ACCESS_INFO.md
+[2025-07-20 11:50:49] [INFO] Added all changes
+[2025-07-20 11:50:49] [INFO] Committed: Auto-sync: 2025-07-20 11:50:49
+[2025-07-20 11:50:52] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:51:06] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:51:06] [INFO] Changes found:
+[2025-07-20 11:51:06] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:51:06] [INFO] Added all changes
+[2025-07-20 11:51:06] [INFO] Committed: Auto-sync: 2025-07-20 11:51:06
+[2025-07-20 11:51:09] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:51:22] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:51:22] [INFO] Changes found:
+[2025-07-20 11:51:22] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:51:22] [INFO]   ?? test.html
+[2025-07-20 11:51:22] [INFO] Added all changes
+[2025-07-20 11:51:22] [INFO] Committed: Auto-sync: 2025-07-20 11:51:22
+[2025-07-20 11:51:24] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:51:39] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:51:39] [INFO] Changes found:
+[2025-07-20 11:51:39] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:51:39] [INFO] Added all changes
+[2025-07-20 11:51:39] [INFO] Committed: Auto-sync: 2025-07-20 11:51:39
+[2025-07-20 11:51:41] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:51:54] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:51:54] [INFO] Changes found:
+[2025-07-20 11:51:54] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:51:54] [INFO] Added all changes
+[2025-07-20 11:51:54] [INFO] Committed: Auto-sync: 2025-07-20 11:51:54
+[2025-07-20 11:51:56] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:52:11] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:52:11] [INFO] Changes found:
+[2025-07-20 11:52:11] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:52:11] [INFO] Added all changes
+[2025-07-20 11:52:11] [INFO] Committed: Auto-sync: 2025-07-20 11:52:11
+[2025-07-20 11:52:13] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:52:26] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:52:27] [INFO] Changes found:
+[2025-07-20 11:52:27] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:52:27] [INFO] Added all changes
+[2025-07-20 11:52:27] [INFO] Committed: Auto-sync: 2025-07-20 11:52:27
+[2025-07-20 11:52:29] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:52:43] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:52:43] [INFO] Changes found:
+[2025-07-20 11:52:43] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:52:43] [INFO] Added all changes
+[2025-07-20 11:52:43] [INFO] Committed: Auto-sync: 2025-07-20 11:52:43
+[2025-07-20 11:52:46] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:52:59] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:52:59] [INFO] Changes found:
+[2025-07-20 11:52:59] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:52:59] [INFO] Added all changes
+[2025-07-20 11:52:59] [INFO] Committed: Auto-sync: 2025-07-20 11:52:59
+[2025-07-20 11:53:01] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:53:16] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:53:16] [INFO] Changes found:
+[2025-07-20 11:53:16] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:53:16] [INFO] Added all changes
+[2025-07-20 11:53:16] [INFO] Committed: Auto-sync: 2025-07-20 11:53:16
+[2025-07-20 11:53:18] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:53:31] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:53:31] [INFO] Changes found:
+[2025-07-20 11:53:31] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:53:31] [INFO] Added all changes
+[2025-07-20 11:53:31] [INFO] Committed: Auto-sync: 2025-07-20 11:53:31
+[2025-07-20 11:53:34] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:53:48] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:53:48] [INFO] Changes found:
+[2025-07-20 11:53:48] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:53:48] [INFO] Added all changes
+[2025-07-20 11:53:48] [INFO] Committed: Auto-sync: 2025-07-20 11:53:48
+[2025-07-20 11:53:50] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:54:04] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:54:04] [INFO] Changes found:
+[2025-07-20 11:54:04] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:54:04] [INFO] Added all changes
+[2025-07-20 11:54:04] [INFO] Committed: Auto-sync: 2025-07-20 11:54:04
+[2025-07-20 11:54:06] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:54:20] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:54:20] [INFO] Changes found:
+[2025-07-20 11:54:20] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:54:20] [INFO] Added all changes
+[2025-07-20 11:54:20] [INFO] Committed: Auto-sync: 2025-07-20 11:54:20
+[2025-07-20 11:54:23] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:54:36] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:54:36] [INFO] Changes found:
+[2025-07-20 11:54:36] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:54:37] [INFO] Added all changes
+[2025-07-20 11:54:37] [INFO] Committed: Auto-sync: 2025-07-20 11:54:37
+[2025-07-20 11:54:39] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:54:53] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:54:53] [INFO] Changes found:
+[2025-07-20 11:54:53] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:54:53] [INFO] Added all changes
+[2025-07-20 11:54:53] [INFO] Committed: Auto-sync: 2025-07-20 11:54:53
+[2025-07-20 11:54:55] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:55:09] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:55:09] [INFO] Changes found:
+[2025-07-20 11:55:09] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:55:09] [INFO] Added all changes
+[2025-07-20 11:55:09] [INFO] Committed: Auto-sync: 2025-07-20 11:55:09
+[2025-07-20 11:55:12] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:55:25] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:55:25] [INFO] Changes found:
+[2025-07-20 11:55:25] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:55:25] [INFO] Added all changes
+[2025-07-20 11:55:25] [INFO] Committed: Auto-sync: 2025-07-20 11:55:25
+[2025-07-20 11:55:27] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:55:42] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:55:42] [INFO] Changes found:
+[2025-07-20 11:55:42] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:55:42] [INFO] Added all changes
+[2025-07-20 11:55:42] [INFO] Committed: Auto-sync: 2025-07-20 11:55:42
+[2025-07-20 11:55:57] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:55:57] [INFO] Changes found:
+[2025-07-20 11:55:57] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:55:57] [INFO] Added all changes
+[2025-07-20 11:55:57] [INFO] Committed: Auto-sync: 2025-07-20 11:55:57
+[2025-07-20 11:55:58] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:56:01] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:56:28] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:56:28] [INFO] Changes found:
+[2025-07-20 11:56:28] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:56:28] [INFO] Added all changes
+[2025-07-20 11:56:28] [INFO] Committed: Auto-sync: 2025-07-20 11:56:28
+[2025-07-20 11:56:28] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:56:31] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:56:31] [INFO] Changes found:
+[2025-07-20 11:56:31] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:56:31] [INFO] Added all changes
+[2025-07-20 11:56:31] [INFO] Committed: Auto-sync: 2025-07-20 11:56:31
+[2025-07-20 11:56:31] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:56:58] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:56:58] [INFO] Changes found:
+[2025-07-20 11:56:58] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:56:58] [INFO] Added all changes
+[2025-07-20 11:56:58] [INFO] Committed: Auto-sync: 2025-07-20 11:56:58
+[2025-07-20 11:57:01] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:57:01] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:57:02] [INFO] Changes found:
+[2025-07-20 11:57:02] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:57:02] [INFO] Added all changes
+[2025-07-20 11:57:02] [INFO] Committed: Auto-sync: 2025-07-20 11:57:02
+[2025-07-20 11:57:04] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:57:31] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:57:31] [INFO] Changes found:
+[2025-07-20 11:57:31] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:57:31] [INFO] Added all changes
+[2025-07-20 11:57:31] [INFO] Committed: Auto-sync: 2025-07-20 11:57:31
+[2025-07-20 11:57:33] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:57:34] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:57:34] [INFO] Changes found:
+[2025-07-20 11:57:34] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:57:34] [INFO] Added all changes
+[2025-07-20 11:57:34] [INFO] Committed: Auto-sync: 2025-07-20 11:57:34
+[2025-07-20 11:57:37] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:58:03] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:58:03] [INFO] Changes found:
+[2025-07-20 11:58:03] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:58:03] [INFO] Added all changes
+[2025-07-20 11:58:03] [INFO] Committed: Auto-sync: 2025-07-20 11:58:03
+[2025-07-20 11:58:06] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:58:07] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:58:07] [INFO] Changes found:
+[2025-07-20 11:58:07] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:58:07] [INFO] Added all changes
+[2025-07-20 11:58:07] [INFO] Committed: Auto-sync: 2025-07-20 11:58:07
+[2025-07-20 11:58:09] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:58:36] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:58:36] [INFO] Changes found:
+[2025-07-20 11:58:36] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:58:36] [INFO] Added all changes
+[2025-07-20 11:58:36] [INFO] Committed: Auto-sync: 2025-07-20 11:58:36
+[2025-07-20 11:58:38] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:58:39] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:58:39] [INFO] Changes found:
+[2025-07-20 11:58:39] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:58:39] [INFO] Added all changes
+[2025-07-20 11:58:39] [INFO] Committed: Auto-sync: 2025-07-20 11:58:39
+[2025-07-20 11:58:41] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:59:08] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:59:08] [INFO] Changes found:
+[2025-07-20 11:59:08] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:59:08] [INFO] Added all changes
+[2025-07-20 11:59:09] [INFO] Committed: Auto-sync: 2025-07-20 11:59:08
+[2025-07-20 11:59:10] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:59:11] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:59:11] [INFO] Changes found:
+[2025-07-20 11:59:11] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:59:11] [INFO] Added all changes
+[2025-07-20 11:59:11] [INFO] Committed: Auto-sync: 2025-07-20 11:59:11
+[2025-07-20 11:59:13] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:59:40] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:59:41] [INFO] Changes found:
+[2025-07-20 11:59:41] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:59:41] [INFO] Added all changes
+[2025-07-20 11:59:41] [INFO] Committed: Auto-sync: 2025-07-20 11:59:41
+[2025-07-20 11:59:43] [INFO] Push successful to branch: newBranch
+[2025-07-20 11:59:43] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:59:43] [INFO] Changes found:
+[2025-07-20 11:59:43] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:59:43] [INFO] Added all changes
+[2025-07-20 11:59:44] [INFO] Committed: Auto-sync: 2025-07-20 11:59:43
+[2025-07-20 11:59:46] [INFO] Push successful to branch: newBranch
+[2025-07-20 12:02:44] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:02:44] [INFO] Changes found:
+[2025-07-20 12:02:44] [INFO]   DU logs/realtime-sync.log
+[2025-07-20 12:02:44] [INFO]   ?? scripts/
+[2025-07-20 12:02:44] [INFO]   ?? sync-realtime.ps1
