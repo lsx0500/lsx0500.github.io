@@ -305,3 +305,8 @@
 [2025-07-20 14:51:45] [INFO] Changes found:
 [2025-07-20 14:51:45] [INFO]    M logs/realtime-sync.log
 [2025-07-20 14:51:45] [INFO]   ?? core/backend/target/dependency/
+[2025-07-20 14:51:46] [INFO] Added all changes
+[2025-07-20 14:51:46] [INFO] Committed: Auto-sync: 2025-07-20 14:51:46
+[2025-07-20 14:51:52] [INFO] Changes detected. Starting sync...
+[2025-07-20 14:51:52] [INFO] Changes found:
+[2025-07-20 14:51:52] [INFO]    M logs/realtime-sync.log
