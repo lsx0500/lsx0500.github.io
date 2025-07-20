@@ -13,10 +13,10 @@ Write-Host "Project Root: $ProjectRoot" -ForegroundColor Yellow
 function Test-FileExists {
     param([string]$Path, [string]$Description)
     if (Test-Path $Path) {
-        Write-Host "OK $Description: $Path" -ForegroundColor Green
+        Write-Host "OK $Description`: $Path" -ForegroundColor Green
         return $true
     } else {
-        Write-Host "ERROR $Description: $Path (NOT FOUND)" -ForegroundColor Red
+        Write-Host "ERROR $Description`: $Path (NOT FOUND)" -ForegroundColor Red
         return $false
     }
 }
@@ -25,10 +25,10 @@ function Test-FileExists {
 function Test-DirectoryExists {
     param([string]$Path, [string]$Description)
     if (Test-Path $Path) {
-        Write-Host "OK $Description: $Path" -ForegroundColor Green
+        Write-Host "OK $Description`: $Path" -ForegroundColor Green
         return $true
     } else {
-        Write-Host "ERROR $Description: $Path (NOT FOUND)" -ForegroundColor Red
+        Write-Host "ERROR $Description`: $Path (NOT FOUND)" -ForegroundColor Red
         return $false
     }
 }
@@ -37,7 +37,7 @@ function Test-DirectoryExists {
 Write-Host "`n1. Git Repository Check:" -ForegroundColor Cyan
 $gitExists = Test-Path ".git"
 if ($gitExists) {
-    Write-Host "✅ Git repository found" -ForegroundColor Green
+    Write-Host "OK Git repository found" -ForegroundColor Green
     
     # Check current branch
     $currentBranch = git branch --show-current
@@ -48,10 +48,10 @@ if ($gitExists) {
     if ($remote) {
         Write-Host "   Remote URL: $remote" -ForegroundColor Yellow
     } else {
-        Write-Host "   ❌ No remote configured" -ForegroundColor Red
+        Write-Host "   ERROR No remote configured" -ForegroundColor Red
     }
 } else {
-    Write-Host "❌ Git repository not found" -ForegroundColor Red
+    Write-Host "ERROR Git repository not found" -ForegroundColor Red
 }
 
 # 2. Check essential files
@@ -112,7 +112,7 @@ $executionPolicy = Get-ExecutionPolicy
 Write-Host "   Execution Policy: $executionPolicy" -ForegroundColor Yellow
 
 if ($executionPolicy -eq "Restricted") {
-    Write-Host "   ⚠️  Execution policy is restricted. Scripts may not run." -ForegroundColor Yellow
+    Write-Host "   WARNING Execution policy is restricted. Scripts may not run." -ForegroundColor Yellow
 }
 
 # 6. Check Java environment (if backend exists)
@@ -121,15 +121,15 @@ if (Test-Path "core/backend") {
     try {
         $javaVersion = java -version 2>&1 | Select-String "version"
         if ($javaVersion) {
-            Write-Host "   ✅ Java found: $javaVersion" -ForegroundColor Green
+            Write-Host "   OK Java found: $javaVersion" -ForegroundColor Green
         } else {
-            Write-Host "   ❌ Java not found" -ForegroundColor Red
+            Write-Host "   ERROR Java not found" -ForegroundColor Red
         }
     } catch {
-        Write-Host "   ❌ Java not found" -ForegroundColor Red
+        Write-Host "   ERROR Java not found" -ForegroundColor Red
     }
 } else {
-    Write-Host "   ⏭️  Backend directory not found, skipping Java check" -ForegroundColor Yellow
+    Write-Host "   SKIP Backend directory not found, skipping Java check" -ForegroundColor Yellow
 }
 
 # 7. Check port availability
@@ -138,9 +138,9 @@ $portsToCheck = @(8000, 8001, 8080)
 foreach ($port in $portsToCheck) {
     $portInUse = Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue
     if ($portInUse) {
-        Write-Host "   ⚠️  Port $port is in use" -ForegroundColor Yellow
+        Write-Host "   WARNING Port $port is in use" -ForegroundColor Yellow
     } else {
-        Write-Host "   ✅ Port $port is available" -ForegroundColor Green
+        Write-Host "   OK Port $port is available" -ForegroundColor Green
     }
 }
 
@@ -149,9 +149,9 @@ Write-Host "`n=== Summary ===" -ForegroundColor Green
 $totalErrors = $fileErrors + $dirErrors + $templateErrors
 
 if ($totalErrors -eq 0) {
-    Write-Host "✅ No critical errors found!" -ForegroundColor Green
+    Write-Host "OK No critical errors found!" -ForegroundColor Green
 } else {
-    Write-Host "❌ Found $totalErrors critical errors:" -ForegroundColor Red
+    Write-Host "ERROR Found $totalErrors critical errors:" -ForegroundColor Red
     Write-Host "   - File errors: $fileErrors" -ForegroundColor Red
     Write-Host "   - Directory errors: $dirErrors" -ForegroundColor Red
     Write-Host "   - Template errors: $templateErrors" -ForegroundColor Red
