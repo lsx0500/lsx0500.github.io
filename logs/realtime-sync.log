@@ -1624,3 +1624,14 @@
 [2025-07-20 12:30:45] [INFO]    M core/backend/src/main/java/com/lsx0500/controller/GeneratorController.java
 [2025-07-20 12:30:45] [INFO]    M core/backend/target/classes/com/lsx0500/controller/GeneratorController.class
 [2025-07-20 12:30:45] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:30:45] [INFO] Added all changes
+[2025-07-20 12:30:45] [INFO] Committed: Auto-sync: 2025-07-20 12:30:45
+[2025-07-20 12:30:48] [INFO] Push successful to main branch
+[2025-07-20 12:30:59] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:30:59] [INFO] Changes found:
+[2025-07-20 12:30:59] [INFO]    M core/backend/target/classes/com/lsx0500/GeneratorApplication.class
+[2025-07-20 12:30:59] [INFO]    M core/backend/target/classes/com/lsx0500/controller/GeneratorController.class
+[2025-07-20 12:30:59] [INFO]    M core/backend/target/classes/com/lsx0500/model/GenerateRequest.class
+[2025-07-20 12:30:59] [INFO]    M core/backend/target/classes/com/lsx0500/model/GenerateResponse.class
+[2025-07-20 12:30:59] [INFO]    M core/backend/target/classes/com/lsx0500/service/GeneratorService.class
+[2025-07-20 12:30:59] [INFO]    M logs/realtime-sync.log
