@@ -14,12 +14,17 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class GeneratorService {
 
-    private static final String PROJECT_ROOT = System.getProperty("user.dir") + "/..";
+    private static final String PROJECT_ROOT = System.getProperty("user.dir");
     private static final String TEMPLATES_DIR = "effects";
     private static final String OUTPUT_DIR = "core/frontend/generated";
     private static final String GITHUB_BASE_URL = "https://lsx0500.github.io";
 
     public GenerateResponse generatePattern(GenerateRequest request) throws IOException {
+        // 调试信息
+        System.out.println("当前工作目录: " + PROJECT_ROOT);
+        System.out.println("模板目录: " + TEMPLATES_DIR);
+        System.out.println("输出目录: " + OUTPUT_DIR);
+        
         // 1. 读取模板文件
         String templateContent = readTemplate(request.getPatternType());
         
