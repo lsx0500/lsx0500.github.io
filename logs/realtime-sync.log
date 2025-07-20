@@ -668,3 +668,8 @@
 [2025-07-20 12:02:44] [INFO]   DU logs/realtime-sync.log
 [2025-07-20 12:02:44] [INFO]   ?? scripts/
 [2025-07-20 12:02:44] [INFO]   ?? sync-realtime.ps1
+[2025-07-20 12:02:44] [INFO] Added all changes
+[2025-07-20 12:02:45] [INFO] Committed: Auto-sync: 2025-07-20 12:02:44
+[2025-07-20 12:02:46] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:02:46] [INFO] Changes found:
+[2025-07-20 12:02:46] [INFO]    M logs/realtime-sync.log
