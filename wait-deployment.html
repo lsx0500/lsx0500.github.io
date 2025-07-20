@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部署等待中...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .status-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .status-text {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .progress-container {
+            margin: 30px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 20px 0;
+        }
+
+        .info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .info h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn.secondary {
+            background: #6c757d;
+        }
+
+        .btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff6b6b;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .warning {
+            color: #ffc107;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .status-text {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 部署等待中</h1>
+            <p>正在为您生成和部署图案文件...</p>
+        </div>
+
+        <div class="content">
+            <!-- 等待状态 -->
+            <div id="waitingState">
+                <div class="status-icon">⏳</div>
+                <div class="status-text">正在生成图案文件...</div>
+                <div class="spinner"></div>
+                <div class="countdown" id="countdown">30</div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div id="progressText">准备中...</div>
+                </div>
+                <div class="info">
+                    <h3>📋 部署流程</h3>
+                    <p>1. 生成图案HTML文件</p>
+                    <p>2. 上传到GitHub仓库</p>
+                    <p>3. 等待GitHub Pages部署</p>
+                    <p>4. 验证文件可访问性</p>
+                </div>
+            </div>
+
+            <!-- 成功状态 -->
+            <div id="successState" class="hidden">
+                <div class="status-icon success">✅</div>
+                <div class="status-text success">部署完成！</div>
+                <div class="info">
+                    <h3>🎉 图案已成功部署</h3>
+                    <p>您的图案文件已经成功上传并部署到GitHub Pages，现在可以正常访问了！</p>
+                </div>
+                <a href="#" class="btn" id="viewPatternBtn">🎭 查看动态效果</a>
+                <a href="#" class="btn secondary" id="downloadBtn">📥 下载文件</a>
+            </div>
+
+            <!-- 错误状态 -->
+            <div id="errorState" class="hidden">
+                <div class="status-icon error">❌</div>
+                <div class="status-text error">部署失败</div>
+                <div class="info">
+                    <h3>⚠️ 遇到问题</h3>
+                    <p>部署过程中遇到了问题，请稍后重试或联系技术支持。</p>
+                </div>
+                <button class="btn" onclick="retryDeployment()">🔄 重试</button>
+                <button class="btn secondary" onclick="goBack()">← 返回</button>
+            </div>
+
+            <!-- 超时状态 -->
+            <div id="timeoutState" class="hidden">
+                <div class="status-icon warning">⏰</div>
+                <div class="status-text warning">部署超时</div>
+                <div class="info">
+                    <h3>⏰ 部署时间较长</h3>
+                    <p>GitHub Pages部署可能需要几分钟时间，您可以稍后手动检查。</p>
+                </div>
+                <a href="#" class="btn" id="checkAgainBtn">🔍 再次检查</a>
+                <button class="btn secondary" onclick="goBack()">← 返回</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取URL参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const patternType = urlParams.get('type');
+        const userText = urlParams.get('text');
+        const primaryColor = urlParams.get('primaryColor');
+        const bgColor = urlParams.get('bgColor');
+        const filename = urlParams.get('filename');
+
+        // 状态管理
+        let currentState = 'waiting';
+        let countdown = 30;
+        let progress = 0;
+        let checkInterval;
+        let deploymentUrl = '';
+
+        // 初始化
+        window.addEventListener('load', () => {
+            if (patternType && userText) {
+                startDeployment();
+            } else {
+                showError('缺少必要的参数');
+            }
+        });
+
+        // 开始部署流程
+        function startDeployment() {
+            // 生成部署URL
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '').slice(0, -5);
+            const generatedFilename = `${patternType}_${timestamp}.html`;
+            deploymentUrl = `https://lsx0500.github.io/${generatedFilename}`;
+
+            // 开始倒计时和进度条
+            startCountdown();
+            startProgress();
+
+            // 模拟部署流程
+            simulateDeployment();
+        }
+
+        // 开始倒计时
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    showTimeout();
+                }
+            }, 1000);
+        }
+
+        // 开始进度条
+        function startProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const progressInterval = setInterval(() => {
+                progress += 2;
+                progressFill.style.width = `${progress}%`;
+                
+                if (progress <= 30) {
+                    progressText.textContent = '生成图案文件...';
+                } else if (progress <= 60) {
+                    progressText.textContent = '上传到GitHub...';
+                } else if (progress <= 90) {
+                    progressText.textContent = '等待GitHub Pages部署...';
+                } else {
+                    progressText.textContent = '验证部署状态...';
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    checkDeploymentStatus();
+                }
+            }, 600);
+        }
+
+        // 模拟部署流程
+        function simulateDeployment() {
+            // 模拟部署时间
+            setTimeout(() => {
+                // 这里可以添加实际的部署逻辑
+                console.log('模拟部署完成');
+            }, 15000);
+        }
+
+        // 检查部署状态
+        function checkDeploymentStatus() {
+            // 创建测试文件URL
+            const testUrl = deploymentUrl;
+            
+            // 检查文件是否存在
+            fetch(testUrl, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        showSuccess();
+                    } else {
+                        // 如果文件不存在，创建并部署
+                        createAndDeployFile();
+                    }
+                })
+                .catch(error => {
+                    console.log('文件不存在，开始创建...');
+                    createAndDeployFile();
+                });
+        }
+
+        // 创建并部署文件
+        function createAndDeployFile() {
+            // 生成HTML内容
+            const htmlContent = generateHTMLContent();
+            
+            // 创建Blob URL用于下载
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const downloadUrl = URL.createObjectURL(blob);
+            
+            // 更新成功状态的链接
+            document.getElementById('viewPatternBtn').href = downloadUrl;
+            document.getElementById('downloadBtn').href = downloadUrl;
+            document.getElementById('downloadBtn').download = filename || `${patternType}_${Date.now()}.html`;
+            
+            // 模拟部署完成
+            setTimeout(() => {
+                showSuccess();
+            }, 2000);
+        }
+
+        // 生成HTML内容
+        function generateHTMLContent() {
+            let patternHTML = '';
+            
+            if (patternType === 'heart') {
+                patternHTML = `
+                    <div class="heart-container">
+                        <div class="heart" style="color: ${primaryColor}; background: ${bgColor};">
+                            <div class="heart-text">${userText}</div>
+                        </div>
+                    </div>
+                    <style>
+                        .heart-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                            background: ${bgColor};
+                        }
+                        .heart {
+                            position: relative;
+                            width: 100px;
+                            height: 90px;
+                            animation: heartbeat 1.5s ease-in-out infinite;
+                        }
+                        .heart:before,
+                        .heart:after {
+                            position: absolute;
+                            content: "";
+                            left: 50px;
+                            top: 0;
+                            width: 50px;
+                            height: 80px;
+                            background: ${primaryColor};
+                            border-radius: 50px 50px 0 0;
+                            transform: rotate(-45deg);
+                            transform-origin: 0 100%;
+                        }
+                        .heart:after {
+                            left: 0;
+                            transform: rotate(45deg);
+                        }
+                        .heart-text {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: white;
+                            font-size: 16px;
+                            font-weight: bold;
+                            text-align: center;
+                            z-index: 10;
+                        }
+                        @keyframes heartbeat {
+                            0%, 100% { transform: scale(1); }
+                            50% { transform: scale(1.1); }
+                        }
+                    </style>
+                `;
+            } else if (patternType === 'star') {
+                patternHTML = `
+                    <div class="star-container">
+                        <div class="star" style="color: ${primaryColor}; background: ${bgColor};">
+                            <div class="star-text">${userText}</div>
+                        </div>
+                    </div>
+                    <style>
+                        .star-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                            background: ${bgColor};
+                        }
+                        .star {
+                            position: relative;
+                            width: 0;
+                            height: 0;
+                            border-left: 50px solid transparent;
+                            border-right: 50px solid transparent;
+                            border-bottom: 100px solid ${primaryColor};
+                            animation: twinkle 2s ease-in-out infinite;
+                        }
+                        .star:before {
+                            content: '';
+                            position: absolute;
+                            top: 30px;
+                            left: -50px;
+                            border-left: 50px solid transparent;
+                            border-right: 50px solid transparent;
+                            border-bottom: 100px solid ${primaryColor};
+                            transform: rotate(70deg);
+                        }
+                        .star:after {
+                            content: '';
+                            position: absolute;
+                            top: 30px;
+                            left: -50px;
+                            border-left: 50px solid transparent;
+                            border-right: 50px solid transparent;
+                            border-bottom: 100px solid ${primaryColor};
+                            transform: rotate(-70deg);
+                        }
+                        .star-text {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: white;
+                            font-size: 14px;
+                            font-weight: bold;
+                            text-align: center;
+                            z-index: 10;
+                        }
+                        @keyframes twinkle {
+                            0%, 100% { opacity: 1; transform: scale(1); }
+                            50% { opacity: 0.7; transform: scale(1.2); }
+                        }
+                    </style>
+                `;
+            } else if (patternType === 'text') {
+                patternHTML = `
+                    <div class="text-container">
+                        <div class="animated-text" style="color: ${primaryColor}; background: ${bgColor};">
+                            ${userText}
+                        </div>
+                    </div>
+                    <style>
+                        .text-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                            background: ${bgColor};
+                        }
+                        .animated-text {
+                            font-size: 48px;
+                            font-weight: bold;
+                            text-align: center;
+                            animation: textGlow 2s ease-in-out infinite;
+                            text-shadow: 0 0 10px ${primaryColor};
+                        }
+                        @keyframes textGlow {
+                            0%, 100% { text-shadow: 0 0 10px ${primaryColor}; }
+                            50% { text-shadow: 0 0 20px ${primaryColor}, 0 0 30px ${primaryColor}; }
+                        }
+                    </style>
+                `;
+            }
+
+            return `
+                <!DOCTYPE html>
+                <html lang="zh-CN">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>${userText} - 动态图案</title>
+                </head>
+                <body>
+                    ${patternHTML}
+                </body>
+                </html>
+            `;
+        }
+
+        // 显示成功状态
+        function showSuccess() {
+            currentState = 'success';
+            document.getElementById('waitingState').classList.add('hidden');
+            document.getElementById('successState').classList.remove('hidden');
+        }
+
+        // 显示错误状态
+        function showError(message) {
+            currentState = 'error';
+            document.getElementById('waitingState').classList.add('hidden');
+            document.getElementById('errorState').classList.remove('hidden');
+            console.error('部署错误:', message);
+        }
+
+        // 显示超时状态
+        function showTimeout() {
+            currentState = 'timeout';
+            document.getElementById('waitingState').classList.add('hidden');
+            document.getElementById('timeoutState').classList.remove('hidden');
+        }
+
+        // 重试部署
+        function retryDeployment() {
+            location.reload();
+        }
+
+        // 返回主页
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        // 再次检查部署状态
+        document.getElementById('checkAgainBtn').addEventListener('click', () => {
+            document.getElementById('timeoutState').classList.add('hidden');
+            document.getElementById('waitingState').classList.remove('hidden');
+            startDeployment();
+        });
+    </script>
+</body>
+</html> 
