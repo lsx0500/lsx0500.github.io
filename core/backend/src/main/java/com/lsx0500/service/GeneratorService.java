@@ -18,9 +18,6 @@ public class GeneratorService {
     private static final String TEMPLATES_DIR = "effects";
     private static final String OUTPUT_DIR = "core/frontend/generated";
     private static final String GITHUB_BASE_URL = "https://lsx0500.github.io";
-    private static final String TEMPLATES_DIR = "effects";
-    private static final String OUTPUT_DIR = "core/frontend/generated";
-    private static final String GITHUB_BASE_URL = "https://lsx0500.github.io";
 
     public GenerateResponse generatePattern(GenerateRequest request) throws IOException {
         // 调试信息
