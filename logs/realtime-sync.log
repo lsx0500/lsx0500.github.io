@@ -4835,3 +4835,14 @@
 [2025-07-20 13:58:06] [INFO] Changes found:
 [2025-07-20 13:58:06] [INFO] Changes detected. Starting sync...
 [2025-07-20 13:58:06] [INFO]    M logs/realtime-sync.log
+[2025-07-20 13:58:06] [INFO] Changes found:
+[2025-07-20 14:07:55] [INFO] Changes detected. Starting sync...
+[2025-07-20 14:07:55] [INFO] Changes found:
+[2025-07-20 14:07:55] [INFO]    M core/backend/src/main/resources/application.yml
+[2025-07-20 14:07:55] [INFO]    M core/backend/target/classes/application.yml
+[2025-07-20 14:07:55] [INFO]    M index.html
+[2025-07-20 14:07:55] [INFO]    M logs/realtime-sync.log
+[2025-07-20 14:07:55] [INFO]   ?? MOBILE_ACCESS_GUIDE.md
+[2025-07-20 14:07:55] [INFO]   ?? get-ip.html
+[2025-07-20 14:07:55] [INFO]   ?? start-mobile.ps1
+[2025-07-20 14:07:55] [INFO]   ?? test-mobile-access.ps1

@@ -303,6 +303,26 @@
         const onlineLink = document.getElementById('onlineLink');
         const previewFrame = document.getElementById('previewFrame');
 
+        // 自动检测后端服务地址
+        let backendUrl = 'http://localhost:8080';
+        
+        // 检测当前设备IP地址
+        async function detectBackendUrl() {
+            try {
+                // 尝试获取本机IP地址
+                const response = await fetch('/api/ip', { method: 'GET' });
+                if (response.ok) {
+                    const ipData = await response.json();
+                    if (ipData.ip) {
+                        backendUrl = `http://${ipData.ip}:8080`;
+                        console.log('检测到后端地址:', backendUrl);
+                    }
+                }
+            } catch (error) {
+                console.log('使用默认后端地址:', backendUrl);
+            }
+        }
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -321,7 +341,7 @@
             };
 
             try {
-                const response = await fetch('http://localhost:8080/api/generate/pattern', {
+                const response = await fetch(`${backendUrl}/api/generate/pattern`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -373,17 +393,19 @@
         }
 
         // 页面加载完成后的初始化
-        window.addEventListener('load', () => {
+        window.addEventListener('load', async () => {
+            // 检测后端地址
+            await detectBackendUrl();
+            
             // 检查后端服务状态
-            fetch('http://localhost:8080/api/generate/health')
-                .then(response => response.text())
-                .then(data => {
-                    console.log('后端服务状态:', data);
-                })
-                .catch(error => {
-                    console.error('后端服务连接失败:', error);
-                    showError('后端服务未启动，请确保后端服务正在运行');
-                });
+            try {
+                const response = await fetch(`${backendUrl}/api/generate/health`);
+                const data = await response.text();
+                console.log('后端服务状态:', data);
+            } catch (error) {
+                console.error('后端服务连接失败:', error);
+                showError('后端服务未启动，请确保后端服务正在运行');
+            }
         });
     </script>
 </body>
