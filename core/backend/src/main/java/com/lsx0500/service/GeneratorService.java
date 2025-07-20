@@ -52,7 +52,8 @@ public class GeneratorService {
         response.setMessage("图案生成成功！");
         response.setFileUrl(GITHUB_BASE_URL + "/" + OUTPUT_DIR + "/" + filename);
         response.setGitUrl("https://github.com/lsx0500/lsx0500.github.io/blob/main/" + OUTPUT_DIR + "/" + filename);
-        response.setPreviewUrl(GITHUB_BASE_URL + "/" + OUTPUT_DIR + "/" + filename);
+        // 使用本地服务器URL作为预览链接，避免GitHub Pages延迟
+        response.setPreviewUrl("http://localhost:8000/" + OUTPUT_DIR + "/" + filename);
         
         return response;
     }
