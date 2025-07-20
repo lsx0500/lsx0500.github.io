@@ -814,3 +814,10 @@
 [2025-07-20 12:09:04] [INFO] Changes detected. Starting sync...
 [2025-07-20 12:09:04] [INFO] Changes found:
 [2025-07-20 12:09:04] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:09:04] [INFO] Added all changes
+[2025-07-20 12:09:04] [INFO] Committed: Auto-sync: 2025-07-20 12:09:04
+[2025-07-20 12:09:05] [INFO] Push successful to branch: newBranch
+[2025-07-20 12:09:25] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:09:25] [INFO] Changes found:
+[2025-07-20 12:09:25] [INFO]    M logs/realtime-sync.log
+[2025-07-20 12:09:25] [INFO]   ?? effects/star/
