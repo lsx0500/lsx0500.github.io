@@ -37,6 +37,10 @@ if (-not (Test-Path ".git")) {
     exit 1
 }
 
+# Get current branch
+$currentBranch = git branch --show-current
+Write-Log "Current branch: $currentBranch"
+
 # Add generated file
 $generatedFile = "core/frontend/generated/$filename"
 if (Test-Path $generatedFile) {
@@ -67,17 +71,18 @@ try {
 # Push to remote repository
 Write-Log "Starting push to remote repository..."
 try {
-    git push origin main
-    Write-Log "Push successful"
+    # Try to push to current branch
+    git push origin $currentBranch
+    Write-Log "Push successful to branch: $currentBranch"
 } catch {
     Write-Log "Push failed, trying HTTPS protocol..." "WARN"
     
     # Try HTTPS protocol
     git remote set-url origin https://github.com/lsx0500/lsx0500.github.io.git
-    git push origin main
+    git push origin $currentBranch
     
     if ($LASTEXITCODE -eq 0) {
-        Write-Log "HTTPS push successful"
+        Write-Log "HTTPS push successful to branch: $currentBranch"
     } else {
         Write-Log "Push failed: $($_.Exception.Message)" "ERROR"
         exit 1
