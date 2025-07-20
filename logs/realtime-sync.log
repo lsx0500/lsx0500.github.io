@@ -997,3 +997,8 @@
 [2025-07-20 12:16:57] [INFO]    M index.html
 [2025-07-20 12:16:57] [INFO]    M logs/realtime-sync.log
 [2025-07-20 12:16:57] [INFO]   ?? scripts/start-backend.ps1
+[2025-07-20 12:16:57] [INFO] Added all changes
+[2025-07-20 12:16:57] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:16:57] [INFO] Committed: Auto-sync: 2025-07-20 12:16:57
+[2025-07-20 12:16:57] [INFO] Changes found:
+[2025-07-20 12:16:57] [INFO]    M logs/realtime-sync.log
