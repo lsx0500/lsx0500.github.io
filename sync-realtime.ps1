@@ -34,6 +34,10 @@ if (-not (Test-Path ".git")) {
     exit 1
 }
 
+# Get current branch
+$currentBranch = git branch --show-current
+Write-Log "Current branch: $currentBranch"
+
 # Get initial state
 $lastState = Get-ChildItem -Recurse -File | Where-Object { 
     $_.FullName -notlike "*\.git\*" -and 
@@ -81,14 +85,15 @@ while ($true) {
                 
                 # Push to remote
                 try {
-                    git push origin main
-                    Write-Log "Push successful"
+                    git push origin $currentBranch
+                    Write-Log "Push successful to branch: $currentBranch"
                 } catch {
                     Write-Log "Push failed, trying HTTPS..." "WARN"
                     git remote set-url origin https://github.com/lsx0500/lsx0500.github.io.git
-                    git push origin main
+                    git push origin $currentBranch
+                    
                     if ($LASTEXITCODE -eq 0) {
-                        Write-Log "HTTPS push successful"
+                        Write-Log "HTTPS push successful to branch: $currentBranch"
                     } else {
                         Write-Log "Push failed" "ERROR"
                     }
