@@ -982,3 +982,9 @@
 [2025-07-20 12:16:24] [INFO]    M logs/realtime-sync.log
 [2025-07-20 12:16:24] [INFO]   ?? core/backend/src/main/java/com/lsx0500/service/
 [2025-07-20 12:16:24] [INFO]   ?? core/backend/src/main/resources/
+[2025-07-20 12:16:24] [INFO] Added all changes
+[2025-07-20 12:16:24] [INFO] Committed: Auto-sync: 2025-07-20 12:16:24
+[2025-07-20 12:16:25] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:16:25] [INFO] Changes found:
+[2025-07-20 12:16:25] [INFO]    M core/backend/src/main/resources/application.yml
+[2025-07-20 12:16:25] [INFO]    M logs/realtime-sync.log
