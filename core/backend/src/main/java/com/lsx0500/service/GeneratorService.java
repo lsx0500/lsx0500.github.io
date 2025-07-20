@@ -57,7 +57,7 @@ public class GeneratorService {
         Path path = Paths.get(PROJECT_ROOT, templatePath);
         
         if (!Files.exists(path)) {
-            throw new IOException("模板文件不存在: " + templatePath);
+            throw new IOException("模板文件不存在: " + path.toString());
         }
         
         return new String(Files.readAllBytes(path), "UTF-8");
