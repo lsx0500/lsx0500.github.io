@@ -3,4 +3,16 @@
 [2025-07-20 15:00:00] [INFO] - 16个测试生成的HTML文件
 [2025-07-20 15:00:00] [INFO] - 3个重复的测试脚本
 [2025-07-20 15:00:00] [INFO] - 清理了281KB的旧日志文件
-[2025-07-20 15:00:00] [INFO] 项目状态：已优化，准备就绪 
+[2025-07-20 15:00:00] [INFO] 项目状态：已优化，准备就绪 [2025-07-20 14:28:30] [INFO] Starting real-time Git sync monitoring...
+[2025-07-20 14:28:30] [INFO] Project root: D:\����\git\test-clone\lsx0500.github.io
+[2025-07-20 14:28:30] [INFO] Check interval: 30 seconds
+[2025-07-20 14:28:30] [INFO] Current branch: main
+[2025-07-20 14:28:30] [INFO] Initial state captured. Monitoring for changes...
+[2025-07-20 14:28:30] [INFO] Changes detected. Starting sync...
+[2025-07-20 14:28:30] [INFO] Changes found:
+[2025-07-20 14:28:30] [INFO]    M core/backend/target/classes/com/lsx0500/GeneratorApplication.class
+[2025-07-20 14:28:30] [INFO]    M core/backend/target/classes/com/lsx0500/controller/GeneratorController.class
+[2025-07-20 14:28:30] [INFO]    M core/backend/target/classes/com/lsx0500/model/GenerateRequest.class
+[2025-07-20 14:28:30] [INFO]    M core/backend/target/classes/com/lsx0500/model/GenerateResponse.class
+[2025-07-20 14:28:30] [INFO]    M core/backend/target/classes/com/lsx0500/service/GeneratorService.class
+[2025-07-20 14:28:30] [INFO]    M logs/realtime-sync.log
