@@ -402,3 +402,6 @@
 [2025-07-20 11:44:13] [INFO] Changes detected. Starting sync...
 [2025-07-20 11:44:13] [INFO] Changes found:
 [2025-07-20 11:44:13] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:44:13] [INFO] Added all changes
+[2025-07-20 11:44:13] [INFO] Committed: Auto-sync: 2025-07-20 11:44:13
+[2025-07-20 11:44:15] [INFO] Push successful
