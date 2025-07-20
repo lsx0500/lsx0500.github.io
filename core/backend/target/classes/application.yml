@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pattern-generator
+  
+  # 允许跨域请求
+  web:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "*"
+      allowed-headers: "*"
+
+# 日志配置
+logging:
+  level:
+    com.lsx0500: DEBUG
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# 自定义配置
+app:
+  git:
+    enabled: true
+    auto-push: true
+  templates:
+    base-path: "effects"
+  output:
+    base-path: "core/frontend/generated" 
