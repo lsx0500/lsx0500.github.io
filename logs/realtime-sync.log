@@ -1936,3 +1936,6 @@
 [2025-07-20 12:37:35] [INFO] Changes found:
 [2025-07-20 12:37:35] [INFO]    M logs/realtime-sync.log
 [2025-07-20 12:37:35] [INFO] Changes detected. Starting sync...
+[2025-07-20 12:37:35] [INFO] Added all changes
+[2025-07-20 12:37:35] [INFO] Changes found:
+[2025-07-20 12:37:35] [INFO]   MM logs/realtime-sync.log
