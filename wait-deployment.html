@@ -171,6 +171,19 @@
         .hidden {
             display: none;
         }
+        
+        .preview-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .preview-frame {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
 
         @media (max-width: 768px) {
             .header h1 {
@@ -227,6 +240,7 @@
                 <a href="#" class="btn" id="viewPatternBtn">🎭 查看动态效果</a>
                 <a href="#" class="btn secondary" id="downloadBtn">📥 下载文件</a>
                 <button class="btn secondary" id="testBtn" style="margin-top: 10px;">🧪 测试功能</button>
+                <button class="btn secondary" id="previewBtn" style="margin-top: 10px;">👁️ 预览效果</button>
             </div>
 
             <!-- 错误状态 -->
@@ -258,11 +272,20 @@
     <script>
         // 获取URL参数
         const urlParams = new URLSearchParams(window.location.search);
-        const patternType = urlParams.get('type');
-        const userText = urlParams.get('text');
-        const primaryColor = urlParams.get('primaryColor');
-        const bgColor = urlParams.get('bgColor');
-        const filename = urlParams.get('filename');
+        const patternType = decodeURIComponent(urlParams.get('type') || '');
+        const userText = decodeURIComponent(urlParams.get('text') || '');
+        const primaryColor = decodeURIComponent(urlParams.get('primaryColor') || '#ff0000');
+        const bgColor = decodeURIComponent(urlParams.get('bgColor') || '#ffffff');
+        const filename = decodeURIComponent(urlParams.get('filename') || '');
+        
+        // 调试URL参数
+        console.log('URL参数:', {
+            patternType,
+            userText,
+            primaryColor,
+            bgColor,
+            filename
+        });
 
         // 状态管理
         let currentState = 'waiting';
@@ -373,40 +396,43 @@
             // 生成HTML内容
             const htmlContent = generateHTMLContent();
             
-            // 创建Data URL（更好的移动端兼容性）
-            const dataUrl = 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent);
-            
             // 创建Blob URL用于下载
             const blob = new Blob([htmlContent], { type: 'text/html' });
             const downloadUrl = URL.createObjectURL(blob);
             
             // 更新成功状态的链接
-            document.getElementById('viewPatternBtn').href = dataUrl;
+            document.getElementById('viewPatternBtn').href = downloadUrl;
             document.getElementById('downloadBtn').href = downloadUrl;
             document.getElementById('downloadBtn').download = filename || `${patternType}_${Date.now()}.html`;
             
+            // 移除之前的事件监听器（避免重复绑定）
+            const viewBtn = document.getElementById('viewPatternBtn');
+            const newViewBtn = viewBtn.cloneNode(true);
+            viewBtn.parentNode.replaceChild(newViewBtn, viewBtn);
+            
             // 为查看按钮添加点击事件
-            document.getElementById('viewPatternBtn').addEventListener('click', function(e) {
+            newViewBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 console.log('点击查看按钮，设备类型:', isMobile ? '移动设备' : '桌面设备');
+                console.log('Blob URL:', downloadUrl);
                 
                 try {
                     if (isMobile) {
                         // 移动设备：直接在当前窗口打开
-                        window.location.href = dataUrl;
+                        window.location.href = downloadUrl;
                     } else {
                         // 桌面设备：尝试在新窗口打开
-                        const newWindow = window.open(dataUrl, '_blank');
+                        const newWindow = window.open(downloadUrl, '_blank');
                         if (!newWindow) {
                             // 如果弹窗被阻止，在当前窗口打开
-                            window.location.href = dataUrl;
+                            window.location.href = downloadUrl;
                         }
                     }
                 } catch (error) {
                     console.error('打开图案失败:', error);
                     // 备用方案：创建临时链接并点击
                     const tempLink = document.createElement('a');
-                    tempLink.href = dataUrl;
+                    tempLink.href = downloadUrl;
                     tempLink.target = '_blank';
                     tempLink.style.display = 'none';
                     document.body.appendChild(tempLink);
@@ -652,13 +678,43 @@
                 </body>
                 </html>
             `;
-            const testDataUrl = 'data:text/html;charset=utf-8,' + encodeURIComponent(testHtml);
             
-            if (isMobile) {
-                window.location.href = testDataUrl;
-            } else {
-                window.open(testDataUrl, '_blank');
+            // 创建Blob URL而不是Data URL
+            const blob = new Blob([testHtml], { type: 'text/html' });
+            const testUrl = URL.createObjectURL(blob);
+            
+            console.log('测试URL:', testUrl);
+            
+            try {
+                if (isMobile) {
+                    window.location.href = testUrl;
+                } else {
+                    const newWindow = window.open(testUrl, '_blank');
+                    if (!newWindow) {
+                        window.location.href = testUrl;
+                    }
+                }
+            } catch (error) {
+                console.error('测试按钮失败:', error);
+                alert('测试功能暂时不可用，请稍后重试');
             }
+        });
+        
+        // 预览按钮事件
+        document.getElementById('previewBtn').addEventListener('click', () => {
+            console.log('预览按钮被点击');
+            const htmlContent = generateHTMLContent();
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const previewUrl = URL.createObjectURL(blob);
+            
+            // 显示预览容器
+            const previewContainer = document.getElementById('previewContainer');
+            const previewFrame = document.getElementById('previewFrame');
+            
+            previewContainer.style.display = 'block';
+            previewFrame.src = previewUrl;
+            
+            console.log('预览URL:', previewUrl);
         });
     </script>
 </body>
