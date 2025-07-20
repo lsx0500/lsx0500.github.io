@@ -360,3 +360,9 @@
 [2025-07-20 11:42:53] [INFO] Changes detected. Starting sync...
 [2025-07-20 11:42:53] [INFO] Changes found:
 [2025-07-20 11:42:53] [INFO]    M logs/realtime-sync.log
+[2025-07-20 11:42:53] [INFO] Added all changes
+[2025-07-20 11:42:53] [INFO] Committed: Auto-sync: 2025-07-20 11:42:53
+[2025-07-20 11:42:54] [INFO] Push successful
+[2025-07-20 11:43:04] [INFO] Changes detected. Starting sync...
+[2025-07-20 11:43:04] [INFO] Changes found:
+[2025-07-20 11:43:04] [INFO]    M logs/realtime-sync.log
