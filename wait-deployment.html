@@ -309,10 +309,15 @@
 
         // 开始部署流程
         function startDeployment() {
+            console.log('🚀 开始部署流程...');
+            
             // 生成部署URL
             const timestamp = new Date().toISOString().replace(/[:.]/g, '').slice(0, -5);
             const generatedFilename = `${patternType}_${timestamp}.html`;
             deploymentUrl = `https://lsx0500.github.io/${generatedFilename}`;
+            
+            console.log('📁 生成文件名:', generatedFilename);
+            console.log('🌐 部署URL:', deploymentUrl);
 
             // 开始倒计时和进度条
             startCountdown();
@@ -372,64 +377,83 @@
 
         // 检查部署状态
         function checkDeploymentStatus() {
+            console.log('🔍 检查部署状态...');
+            
             // 创建测试文件URL
             const testUrl = deploymentUrl;
+            console.log('🔗 测试URL:', testUrl);
             
             // 检查文件是否存在
             fetch(testUrl, { method: 'HEAD' })
                 .then(response => {
+                    console.log('📡 响应状态:', response.status, response.ok);
                     if (response.ok) {
+                        console.log('✅ 文件已存在，显示成功状态');
                         showSuccess();
                     } else {
+                        console.log('❌ 文件不存在，开始创建...');
                         // 如果文件不存在，创建并部署
                         createAndDeployFile();
                     }
                 })
                 .catch(error => {
-                    console.log('文件不存在，开始创建...');
+                    console.log('❌ 检查失败，开始创建...', error);
                     createAndDeployFile();
                 });
         }
 
         // 创建并部署文件
         function createAndDeployFile() {
+            console.log('📝 开始创建并部署文件...');
+            
             // 生成HTML内容
             const htmlContent = generateHTMLContent();
+            console.log('📄 HTML内容长度:', htmlContent.length);
             
             // 创建Blob URL用于下载
             const blob = new Blob([htmlContent], { type: 'text/html' });
             const downloadUrl = URL.createObjectURL(blob);
+            console.log('🔗 下载URL:', downloadUrl);
             
             // 更新成功状态的链接
             document.getElementById('viewPatternBtn').href = downloadUrl;
             document.getElementById('downloadBtn').href = downloadUrl;
             document.getElementById('downloadBtn').download = filename || `${patternType}_${Date.now()}.html`;
             
+            console.log('🔗 查看按钮链接已更新');
+            console.log('🔗 下载按钮链接已更新');
+            
             // 移除之前的事件监听器（避免重复绑定）
             const viewBtn = document.getElementById('viewPatternBtn');
             const newViewBtn = viewBtn.cloneNode(true);
             viewBtn.parentNode.replaceChild(newViewBtn, viewBtn);
             
+            console.log('🔄 查看按钮已重新创建，避免重复绑定');
+            
             // 为查看按钮添加点击事件
             newViewBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                console.log('点击查看按钮，设备类型:', isMobile ? '移动设备' : '桌面设备');
-                console.log('Blob URL:', downloadUrl);
+                console.log('🎯 点击查看按钮');
+                console.log('📱 设备类型:', isMobile ? '移动设备' : '桌面设备');
+                console.log('🔗 Blob URL:', downloadUrl);
                 
                 try {
                     if (isMobile) {
+                        console.log('📱 移动设备：直接在当前窗口打开');
                         // 移动设备：直接在当前窗口打开
                         window.location.href = downloadUrl;
                     } else {
+                        console.log('💻 桌面设备：尝试在新窗口打开');
                         // 桌面设备：尝试在新窗口打开
                         const newWindow = window.open(downloadUrl, '_blank');
                         if (!newWindow) {
+                            console.log('⚠️ 弹窗被阻止，在当前窗口打开');
                             // 如果弹窗被阻止，在当前窗口打开
                             window.location.href = downloadUrl;
                         }
                     }
                 } catch (error) {
-                    console.error('打开图案失败:', error);
+                    console.error('❌ 打开图案失败:', error);
                     // 备用方案：创建临时链接并点击
                     const tempLink = document.createElement('a');
                     tempLink.href = downloadUrl;
@@ -438,11 +462,13 @@
                     document.body.appendChild(tempLink);
                     tempLink.click();
                     document.body.removeChild(tempLink);
+                    console.log('🔄 使用备用方案');
                 }
             });
             
             // 模拟部署完成
             setTimeout(() => {
+                console.log('✅ 模拟部署完成，显示成功状态');
                 showSuccess();
             }, 2000);
         }
