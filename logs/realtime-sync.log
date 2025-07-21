@@ -3252,3 +3252,8 @@
 [2025-07-21 21:54:31] [INFO]    M logs/realtime-sync.log
 [2025-07-21 21:54:31] [INFO] Changes detected. Starting sync...
 [2025-07-21 21:54:31] [INFO] Changes detected. Starting sync...
+[2025-07-21 21:54:31] [INFO] Added all changes
+[2025-07-21 21:54:31] [INFO] Changes found:
+[2025-07-21 21:54:31] [INFO] Changes found:
+[2025-07-21 21:54:31] [INFO]   MM logs/realtime-sync.log
+[2025-07-21 21:54:31] [INFO]   MM logs/realtime-sync.log
