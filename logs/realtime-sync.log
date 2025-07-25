@@ -14720,3 +14720,8 @@
 [2025-07-26 00:24:58] [INFO] Changes detected. Starting sync...
 [2025-07-26 00:24:58] [INFO] Changes found:
 [2025-07-26 00:24:58] [INFO]    M logs/realtime-sync.log
+[2025-07-26 00:24:58] [INFO] Added all changes
+[2025-07-26 00:24:59] [INFO] Committed: Auto-sync: 2025-07-26 00:24:58
+[2025-07-26 00:25:01] [INFO] Changes detected. Starting sync...
+[2025-07-26 00:25:01] [INFO] Changes found:
+[2025-07-26 00:25:01] [INFO]    M logs/realtime-sync.log
