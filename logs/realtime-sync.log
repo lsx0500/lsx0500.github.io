@@ -8880,3 +8880,8 @@
 [2025-07-25 16:15:21] [INFO] Changes detected. Starting sync...
 [2025-07-25 16:15:21] [INFO] Changes found:
 [2025-07-25 16:15:21] [INFO]    M logs/realtime-sync.log
+[2025-07-25 16:15:21] [INFO] Added all changes
+[2025-07-25 16:15:21] [INFO] Committed: Auto-sync: 2025-07-25 16:15:21
+[2025-07-25 16:15:22] [INFO] Changes detected. Starting sync...
+[2025-07-25 16:15:22] [INFO] Changes found:
+[2025-07-25 16:15:22] [INFO]    M logs/realtime-sync.log
